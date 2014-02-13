@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.deal.dao.DealDao">
+<select id="wms_queryDeal" parameterType="DealReq" resultType="DealEvt" resultMap="DealEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.commodityid, t.commodityname, t.orderid, t.status, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="commodityId !=null and commodityId !='' ">
+                AND t.COMMODITYID LIKE CONCAT(CONCAT('%', #{commodityId}),'%')
+            </if>
+            <if test="commodityName !=null and commodityName !='' ">
+                AND t.COMMODITYNAME LIKE CONCAT(CONCAT('%', #{commodityName}),'%')
+            </if>
+            <if test="orderId !=null and orderId !='' ">
+                AND t.ORDERID LIKE CONCAT(CONCAT('%', #{orderId}),'%')
+            </if>
+            <if test="status !=null and status !='' ">
+                AND t.STATUS = #{status}
+            </if>
+            <if test="type !=null and type !='' ">
+                AND t.TYPE = #{type}
+            </if>
+            <if test="number !=null and number !='' ">
+                AND t.NUMBER = #{number}
+            </if>
+            <if test="price !=null and price !='' ">
+                AND t.PRICE = #{price}
+            </if>
+            <if test="createTime !=null and createTime !='' ">
+                AND t.CREATETIME = #{createTime}
+            </if>
+            <if test="dealTime !=null and dealTime !='' ">
+                AND t.DEALTIME = #{dealTime}
+            </if>
+            <if test="remark !=null and remark !='' ">
+                AND t.REMARK = #{remark}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addDeal" parameterType="DealEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_deal (id, commodityid, commodityname, orderid, status, type, number, price, createtime, dealtime, remark) 
+            VALUES (#{id}, #{commodityId}, #{commodityName}, #{orderId}, #{status}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
+        ]]>
+</insert>
+
+<update id="wms_updateDeal" parameterType="DealEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_deal SET 
+                       commodityid = #{commodityId},
+                       commodityname = #{commodityName},
+                       orderid = #{orderId},
+                       status = #{status},
+                       type = #{type},
+                       number = #{number},
+                       price = #{price},
+                       dealtime = #{dealTime},
+                       remark = #{remark}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteDeal" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_deal WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

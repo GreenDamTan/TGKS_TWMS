@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.commodity.dao.CommodityDao">
+    <resultMap id="CommodityEvtMap" type="CommodityEvt">
+        <id property="id" column="ID" />
+        <result property="code" column="CODE" />
+        <result property="name" column="NAME" />
+        <result property="number" column="NUMBER" />
+        <result property="categoryId" column="CATEGORYID" />
+        <result property="images" column="IMAGES" />
+        <result property="brand" column="BRAND" />
+        <result property="type" column="TYPE" />
+        <result property="details" column="DETAILS" />
+        <result property="supplierId" column="SUPPLIERID" />
+        <result property="url" column="URL" />
+        <result property="price" column="PRICE" />
+        <result property="netPrice" column="NETPRICE" />
+        <result property="createTime" column="CREATETIME" />
+        <result property="remark" column="REMARK" />
+        <result property="categoryName" column="CATEGORYNAME" />
+    </resultMap>
+</mapper>

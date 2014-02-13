@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.category.dao.CategoryDao">
+<select id="wms_queryCategory" parameterType="CategoryReq" resultType="CategoryEvt" resultMap="CategoryEvtMap">
+        <![CDATA[  
+            SELECT t.* FROM (SELECT t.id, t.name, t.preid, c.name prename FROM t_tgks_wms_category t, t_tgks_wms_category c
+        ]]>
+        <where>
+                1=1
+                AND t.preId = c.id
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="name !=null and name !='' ">
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
+            </if>
+            <if test="preId !=null and preId !='' ">
+                AND t.PREID = #{preId}
+            </if>
+        </where>
+        <![CDATA[  
+            UNION
+            SELECT t.id, t.name, t.preid, '一级分类' FROM t_tgks_wms_category t WHERE t.preId = '0') t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="name !=null and name !='' ">
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
+            </if>
+            <if test="preId !=null and preId !='' ">
+                AND t.PREID = #{preId}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addCategory" parameterType="CategoryEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_category (id, name, preid) 
+            VALUES (#{id}, #{name}, #{preId}) 
+        ]]>
+</insert>
+
+<update id="wms_updateCategory" parameterType="CategoryEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_category SET 
+                       name = #{name},
+                       preid = #{preId}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteCategory" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_category WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

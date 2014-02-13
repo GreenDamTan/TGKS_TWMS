@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.order.dao.OrderDao">
+<select id="wms_queryOrder" parameterType="OrderReq" resultType="OrderEvt" resultMap="OrderEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.orderid, t.type, t.status, t.accounttype, t.invoiceType, t.invoice, t.createtime, t.remark FROM t_tgks_wms_order t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="orderId !=null and orderId !='' ">
+                AND t.ORDERID LIKE CONCAT(CONCAT('%', #{orderId}),'%')
+            </if>
+            <if test="type !=null and type !='' ">
+                AND t.TYPE = #{type}
+            </if>
+            <if test="status !=null and status !='' ">
+                AND t.STATUS = #{status}
+            </if>
+            <if test="accountType !=null and accountType !='' ">
+                AND t.ACCOUNTTYPE = #{accountType}
+            </if>
+            <if test="invoiceType !=null and invoiceType !='' ">
+                AND t.INVOICETYPE = #{invoiceType}
+            </if>
+            <if test="invoice !=null and invoice !='' ">
+                AND t.INVOICE LIKE CONCAT(CONCAT('%', #{invoice}),'%')
+            </if>
+            <if test="createTime !=null and createTime !='' ">
+                AND t.CREATETIME = #{createTime}
+            </if>
+            <if test="remark !=null and remark !='' ">
+                AND t.REMARK = #{remark}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addOrder" parameterType="OrderEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_order (id, orderid, type, status, accounttype, invoiceType, invoice, createtime, remark) 
+            VALUES (#{id}, #{orderId}, #{type}, #{status}, #{accountType}, #{invoiceType}, #{invoice}, #{createTime}, #{remark}) 
+        ]]>
+</insert>
+
+<update id="wms_updateOrder" parameterType="OrderEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_order SET 
+                       orderid = #{orderId},
+                       type = #{type},
+                       status = #{status},
+                       accounttype = #{accountType},
+                       invoiceType = #{invoiceType},
+                       invoice = #{invoice},
+                       remark = #{remark}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteOrder" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_order WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.supplier.dao.SupplierDao">
+<select id="wms_querySupplier" parameterType="SupplierReq" resultType="SupplierEvt" resultMap="SupplierEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.name, t.address, t.account, t.bank, t.taxnumber, t.details, t.category, t.url, t.person, t.sex, t.age, t.email, t.mobile, t.tel, t.fax, t.qq, t.alww, t.msn, t.createtime, t.remark FROM t_tgks_wms_supplier t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="name !=null and name !='' ">
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
+            </if>
+            <if test="address !=null and address !='' ">
+                AND t.ADDRESS LIKE CONCAT(CONCAT('%', #{address}),'%')
+            </if>
+            <if test="account !=null and account !='' ">
+                AND t.ACCOUNT LIKE CONCAT(CONCAT('%', #{account}),'%')
+            </if>
+            <if test="bank !=null and bank !='' ">
+                AND t.BANK = #{bank}
+            </if>
+            <if test="taxNumber !=null and taxNumber !='' ">
+            	AND t.TAXNUMBER LIKE CONCAT(CONCAT('%', #{taxNumber}),'%')
+            </if>
+            <if test="details !=null and details !='' ">
+                AND t.DETAILS = #{details}
+            </if>
+            <if test="category !=null and category !='' ">
+                AND t.CATEGORY LIKE CONCAT(CONCAT('%', #{category}),'%')
+            </if>
+            <if test="url !=null and url !='' ">
+                AND t.URL = #{url}
+            </if>
+            <if test="person !=null and person !='' ">
+                AND t.PERSON LIKE CONCAT(CONCAT('%', #{person}),'%')
+            </if>
+            <if test="mobile !=null and mobile !='' ">
+                AND t.MOBILE LIKE CONCAT(CONCAT('%', #{mobile}),'%')
+            </if>
+            <if test="tel !=null and tel !='' ">
+            	AND t.TEL LIKE CONCAT(CONCAT('%', #{tel}),'%')
+            </if>
+            <if test="fax !=null and fax !='' ">
+            	AND t.FAX LIKE CONCAT(CONCAT('%', #{fax}),'%')
+            </if>
+            <if test="qq !=null and qq !='' ">
+                AND t.QQ = #{qq}
+            </if>
+            <if test="alww !=null and alww !='' ">
+                AND t.ALWW = #{alww}
+            </if>
+            <if test="msn !=null and msn !='' ">
+                AND t.MSN = #{msn}
+            </if>
+            <if test="createTime !=null and createTime !='' ">
+                AND t.CREATETIME = #{createTime}
+            </if>
+            <if test="remark !=null and remark !='' ">
+                AND t.REMARK = #{remark}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addSupplier" parameterType="SupplierEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_supplier (id, name, address, account, bank, taxnumber, details, category, url, person, sex, age, email, mobile, tel, fax, qq, alww, msn, createtime, remark) 
+            VALUES (#{id}, #{name}, #{address}, #{account}, #{bank}, #{taxNumber}, #{details}, #{category}, #{url}, #{person}, #{sex}, #{age}, #{email}, #{mobile}, #{tel}, #{fax}, #{qq}, #{alww}, #{msn}, #{createTime}, #{remark}) 
+        ]]>
+</insert>
+
+<update id="wms_updateSupplier" parameterType="SupplierEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_supplier SET 
+                       name = #{name},
+                       address = #{address},
+                       account = #{account},
+                       bank = #{bank},
+                       taxnumber = #{taxNumber},
+                       details = #{details},
+                       category = #{category},
+                       url = #{url},
+                       person = #{person},
+                       sex = #{sex},
+                       age = #{age},
+                       email = #{email},
+                       mobile = #{mobile},
+                       tel = #{tel},
+                       fax = #{fax},
+                       qq = #{qq},
+                       alww = #{alww},
+                       msn = #{msn},
+                       createtime = #{createTime},
+                       remark = #{remark}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteSupplier" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_supplier WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

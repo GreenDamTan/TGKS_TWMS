@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:p="http://www.springframework.org/schema/p" 
+ xmlns:context="http://www.springframework.org/schema/context" 
+ xmlns:jee="http://www.springframework.org/schema/jee" 
+ xmlns:tx="http://www.springframework.org/schema/tx" 
+ xsi:schemaLocation="
+ http://www.springframework.org/schema/beans 
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context 
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd
+ http://www.springframework.org/schema/jee 
+ http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+ http://www.springframework.org/schema/tx 
+ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+  <!-- ﻿category_dao 配置 -->
+  <bean id="wms_categoryDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.category.dao.CategoryDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿category_service 配置 -->
+  <bean id="wms_categoryService" class="com.moemao.tgks.wms.category.service.impl.CategoryServiceImpl">
+    <property name="wms_categoryDao" ref="wms_categoryDao" />
+  </bean>
+  <!-- ﻿category_action 配置 -->
+  <bean id="wms_categoryAction" class="com.moemao.tgks.wms.category.action.CategoryAction">
+    <property name="wms_categoryService" ref="wms_categoryService" />
+  </bean>
+  
+  <!-- ﻿commodity_dao 配置 -->
+  <bean id="wms_commodityDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.commodity.dao.CommodityDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿commodity_service 配置 -->
+  <bean id="wms_commodityService" class="com.moemao.tgks.wms.commodity.service.impl.CommodityServiceImpl">
+    <property name="wms_commodityDao" ref="wms_commodityDao" />
+  </bean>
+  <!-- ﻿commodity_action 配置 -->
+  <bean id="wms_commodityAction" class="com.moemao.tgks.wms.commodity.action.CommodityAction">
+    <property name="wms_commodityService" ref="wms_commodityService" />
+  </bean>
+  
+  <!-- ﻿deal_dao 配置 -->
+  <bean id="wms_dealDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.deal.dao.DealDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿deal_service 配置 -->
+  <bean id="wms_dealService" class="com.moemao.tgks.wms.deal.service.impl.DealServiceImpl">
+    <property name="wms_dealDao" ref="wms_dealDao" />
+  </bean>
+  <!-- ﻿deal_action 配置 -->
+  <bean id="wms_dealAction" class="com.moemao.tgks.wms.deal.action.DealAction">
+    <property name="wms_dealService" ref="wms_dealService" />
+  </bean>
+  
+  <!-- ﻿order_dao 配置 -->
+  <bean id="wms_orderDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.order.dao.OrderDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿order_service 配置 -->
+  <bean id="wms_orderService" class="com.moemao.tgks.wms.order.service.impl.OrderServiceImpl">
+    <property name="wms_orderDao" ref="wms_orderDao" />
+  </bean>
+  <!-- ﻿order_action 配置 -->
+  <bean id="wms_orderAction" class="com.moemao.tgks.wms.order.action.OrderAction">
+    <property name="wms_orderService" ref="wms_orderService" />
+  </bean>
+  
+  <!-- ﻿supplier_dao 配置 -->
+  <bean id="wms_supplierDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.supplier.dao.SupplierDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿supplier_service 配置 -->
+  <bean id="wms_supplierService" class="com.moemao.tgks.wms.supplier.service.impl.SupplierServiceImpl">
+    <property name="wms_supplierDao" ref="wms_supplierDao" />
+  </bean>
+  <!-- ﻿supplier_action 配置 -->
+  <bean id="wms_supplierAction" class="com.moemao.tgks.wms.supplier.action.SupplierAction">
+    <property name="wms_supplierService" ref="wms_supplierService" />
+  </bean>
+
+</beans>

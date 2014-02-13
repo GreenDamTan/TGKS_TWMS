@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 别名 需要整合到COMMON的myBatis-config.xml中-->
+	<typeAliases>
+		<!-- wms_﻿category -->
+		<typeAlias alias="CategoryEvt" type="com.moemao.tgks.wms.category.entity.CategoryEvt" />
+		<typeAlias alias="CategoryReq" type="com.moemao.tgks.wms.category.entity.CategoryReq" />
+		
+		<!-- wms_﻿commodity -->
+		<typeAlias alias="CommodityEvt" type="com.moemao.tgks.wms.commodity.entity.CommodityEvt" />
+		<typeAlias alias="CommodityReq" type="com.moemao.tgks.wms.commodity.entity.CommodityReq" />
+		
+		<!-- wms_﻿deal -->
+		<typeAlias alias="DealEvt" type="com.moemao.tgks.wms.deal.entity.DealEvt" />
+		<typeAlias alias="DealReq" type="com.moemao.tgks.wms.deal.entity.DealReq" />
+		
+		<!-- wms_﻿order -->
+		<typeAlias alias="OrderEvt" type="com.moemao.tgks.wms.order.entity.OrderEvt" />
+		<typeAlias alias="OrderReq" type="com.moemao.tgks.wms.order.entity.OrderReq" />
+		
+		<!-- wms_﻿supplier -->
+		<typeAlias alias="SupplierEvt" type="com.moemao.tgks.wms.supplier.entity.SupplierEvt" />
+		<typeAlias alias="SupplierReq" type="com.moemao.tgks.wms.supplier.entity.SupplierReq" />
+		
+	</typeAliases>
+</configuration>

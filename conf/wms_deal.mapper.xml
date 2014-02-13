@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.deal.dao.DealDao">
+    <resultMap id="DealEvtMap" type="DealEvt">
+        <id property="id" column="ID" />
+        <result property="commodityId" column="COMMODITYID" />
+        <result property="commodityName" column="COMMODITYNAME" />
+        <result property="orderId" column="ORDERID" />
+        <result property="status" column="STATUS" />
+        <result property="type" column="TYPE" />
+        <result property="number" column="NUMBER" />
+        <result property="price" column="PRICE" />
+        <result property="createTime" column="CREATETIME" />
+        <result property="dealTime" column="DEALTIME" />
+        <result property="remark" column="REMARK" />
+    </resultMap>
+</mapper>

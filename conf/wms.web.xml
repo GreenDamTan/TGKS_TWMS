@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <package namespace="/wms" name="wms" extends="struts-default">
+
+    <!-- wms_category -->
+    <action name="categoryManager" class="com.moemao.tgks.wms.category.action.CategoryAction" method="categoryManager">
+        <result name="success">/WEB-INF/jsp/wms/category/categoryManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryCategory" class="com.moemao.tgks.wms.category.action.CategoryAction" method="queryCategory">
+        <result name="success">/WEB-INF/jsp/wms/category/categoryList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCategoryPage" class="com.moemao.tgks.wms.category.action.CategoryAction" method="editCategoryPage">
+        <result name="success">/WEB-INF/jsp/wms/category/categoryEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCategory" class="com.moemao.tgks.wms.category.action.CategoryAction" method="editCategory">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteCategory" class="com.moemao.tgks.wms.category.action.CategoryAction" method="deleteCategory">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_commodity -->
+    <action name="commodityManager" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="commodityManager">
+        <result name="success">/WEB-INF/jsp/wms/commodity/commodityManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryCommodity" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="queryCommodity">
+        <result name="success">/WEB-INF/jsp/wms/commodity/commodityList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCommodityPage" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="editCommodityPage">
+        <result name="success">/WEB-INF/jsp/wms/commodity/commodityEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCommodity" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="editCommodity">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteCommodity" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="deleteCommodity">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <action name="copyCommodity" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="copyCommodity">
+        <result name="success">/WEB-INF/jsp/wms/commodity/commodityEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_deal -->
+    <action name="dealManager" class="com.moemao.tgks.wms.deal.action.DealAction" method="dealManager">
+        <result name="success">/WEB-INF/jsp/wms/deal/dealManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="queryDeal">
+        <result name="success">/WEB-INF/jsp/wms/deal/dealList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editDealPage" class="com.moemao.tgks.wms.deal.action.DealAction" method="editDealPage">
+        <result name="success">/WEB-INF/jsp/wms/deal/dealEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="editDeal">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="deleteDeal">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <action name="orderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="orderDeal">
+        <result name="success">/WEB-INF/jsp/wms/order/orderDeal.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_order -->
+    <action name="orderManager" class="com.moemao.tgks.wms.order.action.OrderAction" method="orderManager">
+        <result name="success">/WEB-INF/jsp/wms/order/orderManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryOrder" class="com.moemao.tgks.wms.order.action.OrderAction" method="queryOrder">
+        <result name="success">/WEB-INF/jsp/wms/order/orderList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editOrderPage" class="com.moemao.tgks.wms.order.action.OrderAction" method="editOrderPage">
+        <result name="success">/WEB-INF/jsp/wms/order/orderEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editOrder" class="com.moemao.tgks.wms.order.action.OrderAction" method="editOrder">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteOrder" class="com.moemao.tgks.wms.order.action.OrderAction" method="deleteOrder">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_supplier -->
+    <action name="supplierManager" class="com.moemao.tgks.wms.supplier.action.SupplierAction" method="supplierManager">
+        <result name="success">/WEB-INF/jsp/wms/supplier/supplierManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="querySupplier" class="com.moemao.tgks.wms.supplier.action.SupplierAction" method="querySupplier">
+        <result name="success">/WEB-INF/jsp/wms/supplier/supplierList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editSupplierPage" class="com.moemao.tgks.wms.supplier.action.SupplierAction" method="editSupplierPage">
+        <result name="success">/WEB-INF/jsp/wms/supplier/supplierEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editSupplier" class="com.moemao.tgks.wms.supplier.action.SupplierAction" method="editSupplier">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteSupplier" class="com.moemao.tgks.wms.supplier.action.SupplierAction" method="deleteSupplier">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+  </package>
+</struts>
