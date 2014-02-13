@@ -28,6 +28,7 @@
 
 		// 点击记录首栏进入更新操作
 		$(".categoryUpdate").click(function() {
+			$("#categoryManagerSubmit").val("1");
 			$("#categoryEdit").dialog("open");
 			var edit = $.ajax({
 				url : "../wms/editCategoryPage.action?id=" + this.id,

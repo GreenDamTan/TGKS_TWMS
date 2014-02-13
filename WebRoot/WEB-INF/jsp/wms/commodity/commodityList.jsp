@@ -45,6 +45,7 @@ $(function() {
 
 	// 点击记录首栏进入更新操作
 	$(".commodityUpdate").click(function() {
+		$("#commodityManagerSubmit").val("1");
 		$("#commodityEdit").dialog("open");
 		var edit = $.ajax({
 			url : "../wms/editCommodityPage.action?id=" + this.id,

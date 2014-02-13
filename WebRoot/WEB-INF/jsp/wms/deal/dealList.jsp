@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/jsp/common/TGKSHeaderList.inc.jsp" %>
+<input type="hidden" id="dealListSubmit" name="dealListSubmit" value="0" />
 <div id="dealTableDiv" class="ui-widget">
     <table id="dealTable" class="ui-widget ui-widget-content">
         <thead>
@@ -48,10 +49,11 @@
 </div>
 <script type="text/javascript">
 	$(function () {
-		$('#dealTable').longtable({'perPage': 8});
+		$('#dealTable').longtable({'perPage': 10});
 		
 		// 点击记录首栏进入更新操作
 		$(".dealUpdate").click(function() {
+			$("#dealManagerSubmit").val("1");
 			$("#dealEdit").dialog("open");
 			var edit = $.ajax({
 				url : "../wms/editDealPage.action?id=" + this.id,

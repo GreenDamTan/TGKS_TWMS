@@ -76,6 +76,7 @@ $(function() {
 
 	// 点击记录首栏进入更新操作
 	$(".orderUpdate").click(function() {
+		$("#orderManagerSubmit").val("1");
 		$("#orderEdit").dialog("open");
 		var edit = $.ajax({
 			url : "../wms/editOrderPage.action?id=" + this.id,
@@ -98,6 +99,7 @@ $(function() {
 	
 	// 订单交易详情管理按钮
 	$(".orderDeal").click(function() {
+		$("#orderManagerSubmit").val("1");
 		$("#orderDeal").dialog("open");
 		var deal = $.ajax({
 			url : "../wms/orderDeal.action?params=" + this.title,

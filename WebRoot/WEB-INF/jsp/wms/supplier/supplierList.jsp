@@ -59,6 +59,7 @@
 
 		// 点击记录首栏进入更新操作
 		$(".supplierUpdate").click(function() {
+			$("#supplierManagerSubmit").val("1");
 			$("#supplierEdit").dialog("open");
 			var edit = $.ajax({
 				url : "../wms/editSupplierPage.action?id=" + this.id,
