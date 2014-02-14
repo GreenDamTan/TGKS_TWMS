@@ -22,6 +22,8 @@
 						<option value="1" >已付款</option>
 					</select>
 				</td>
+			</tr>
+			<tr>
 				<td><label>交易类型: </label>
 				<td>
 					<select name="dealReq.type">
@@ -30,9 +32,6 @@
 						<option value="1" >售出</option>
 					</select>
 				</td>
-			</tr>
-			<tr>
-				<td></td><td></td>
 				<td></td><td></td>
 				<td></td><td></td>
 				<td></td><td></td>

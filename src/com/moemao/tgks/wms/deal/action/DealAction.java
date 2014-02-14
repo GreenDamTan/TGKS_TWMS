@@ -112,6 +112,7 @@ public class DealAction extends TGKSAction
      */
     public String orderDeal()
     {
+    	// 参数最后一位表示订单交易类型
         String params = this.getRequest().getParameter("params").trim();
         orderDealOrderId = params.substring(0, params.length() - 1);
         orderDealOrderType = params.substring(params.length() - 1, params.length());

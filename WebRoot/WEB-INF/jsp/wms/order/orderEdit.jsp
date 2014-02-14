@@ -6,8 +6,6 @@
 	<tr>
 		<td><label for="name">订单编号</label></td>
 		<td><input type="text" name="orderEvt.orderId" id="orderOrderId" class="text ui-widget-content ui-corner-all" value="${orderEvt.orderId }" /></td>
-	</tr>
-	<tr>
 		<td><label for="status">订单状态</label></td>
 		<td>
 			<s:if test="orderEvt.status == 0">
@@ -49,8 +47,6 @@
 				</table>
 			</s:else>
 		</td>
-	</tr>
-	<tr>
 		<td><label for="type">账目类型</label></td>
 		<td>
 			<s:if test='orderEvt.accountType=="1"'>
@@ -88,14 +84,12 @@
 				<option value="2" <s:if test="orderEvt.invoiceType == 2 ">selected="selected"</s:if>>增值税发票</option>
 			</select>
 		</td>
-	</tr>
-	<tr>
 		<td><label for="invoice">发票编号</label></td>
 		<td><input type="text" name="orderEvt.invoice" id="orderInvoice" class="text ui-widget-content ui-corner-all" value="${orderEvt.invoice }" /></td>
 	</tr>
 	<tr>
 		<td><label for="remark">备注</label></td>
-		<td><textarea name="orderEvt.remark" id="orderRemark" class="text ui-widget-content ui-corner-all" cols="100" rows="5">${orderEvt.remark }</textarea></td>
+		<td colspan="3"><textarea name="orderEvt.remark" id="orderRemark" class="text ui-widget-content ui-corner-all" cols="100" rows="5">${orderEvt.remark }</textarea></td>
 	</tr>
 </table>
 <script type="text/javascript">

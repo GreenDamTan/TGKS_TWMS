@@ -7,6 +7,7 @@
             <tr class="ui-widget-header ">
                 <th width="20"><input type="checkbox" id="allDealId" name="allDealId"/></th>
 				<th>商品名称</th>
+				<th>商品编号</th>
 				<th>订单号</th>
 				<th>交易状态</th>
 				<th>交易类型</th>
@@ -14,6 +15,7 @@
 				<th>交易价格</th>
 				<th>交易时间</th>
 				<th>付款时间</th>
+				<th>备注</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +23,7 @@
 				<tr>
 					<td width="20"><input type="checkbox" name="dealId" value="<s:property value='#evt.id'/>"/></td>
 					<td><b id="<s:property value='#evt.id'/>" class="dealUpdate"><s:property value="#evt.commodityName"/></b></td>
+					<td><s:property value="#evt.commodityId"/></td>
 					<td><s:property value="#evt.orderId"/></td>
 					<td>
 						<s:if test="#evt.status == 0">
@@ -42,6 +45,7 @@
 					<td><s:property value="#evt.price"/></td>
 					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 					<td><s:date name="#evt.dealTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+					<td><s:property value="#evt.remark"/></td>
 				</tr>
 			</s:iterator>
 		</tbody>
@@ -54,6 +58,7 @@
 		// 点击记录首栏进入更新操作
 		$(".dealUpdate").click(function() {
 			$("#dealManagerSubmit").val("1");
+			$("#orderDealSubmit").val("1");
 			$("#dealEdit").dialog("open");
 			var edit = $.ajax({
 				url : "../wms/editDealPage.action?id=" + this.id,

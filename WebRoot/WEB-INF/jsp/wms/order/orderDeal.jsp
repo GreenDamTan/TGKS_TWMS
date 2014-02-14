@@ -6,7 +6,7 @@
 #dealReq input{width:120px;}
 #dealReq select{width:120px;}
 </style>
-
+<input type="hidden" id="orderDealSubmit" name="orderDealSubmit" value="0" />
 <div class="ui-widget">
 	<form id="dealReq" action="../wms/queryDeal.action" method="post">
 		<table>
@@ -22,6 +22,8 @@
 						<option value="1" >已付款</option>
 					</select>
 				</td>
+			</tr>
+			<tr>
 				<td><label>交易类型: </label>
 				<td>
 					<select name="dealReq.type"  id="orderDealOrderType">
@@ -33,10 +35,6 @@
 						</s:elseif>
 					</select>
 				</td>
-			</tr>
-			<tr>
-				<td></td><td></td>
-				<td></td><td></td>
 				<td></td><td></td>
 				<td></td><td></td>
 				<td></td>
@@ -88,6 +86,7 @@ $(document).ready(function(){
 			}, 
 			"关闭": function()
 			{
+				$("#orderDealSubmit").val("0");
 				$("#dealEdit").dialog("close"); 
 			} 
 		}
@@ -96,6 +95,13 @@ $(document).ready(function(){
 	// 提交表单
 	$("#dealForm").submit(function()
 	{
+		if ($("#orderDealSubmit").val() == "0")
+		{
+			return false;
+		}
+		
+		$("#orderDealSubmit").val("0");
+		
 		var options = { 
 			url:"../wms/editDeal.action", // 提交给哪个执行
 			type:'POST', 
@@ -121,6 +127,7 @@ $(document).ready(function(){
 			primary: "ui-icon-plus"
 			}
 		}).click(function() {
+		$("#orderDealSubmit").val("1");
 		$( "#dealEdit" ).dialog( "open" );
 		var edit=$.ajax({url:"../wms/editDealPage.action?orderId=" + $("#orderDealOrderId").val() + "&orderType=" + $("#orderDealOrderType").val(), async:false});
 		$("#dealForm").html(edit.responseText);
@@ -133,6 +140,7 @@ $(document).ready(function(){
 			primary: "ui-icon-minus"
 			}
 		}).click(function() {
+		$("#orderDealSubmit").val("1");
 		// 获取选中的记录ids
 		var ids = "";
 		var array = document.getElementsByName("dealId");
@@ -155,6 +163,7 @@ $(document).ready(function(){
 		if (ids == "")
 		{
 			alert("请选择至少一条记录");
+			$("#orderDealSubmit").val("0");
 			return false;
 		}
 		
