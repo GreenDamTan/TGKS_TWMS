@@ -18,4 +18,6 @@ public interface DealDao extends TGKSDao
     public int wms_updateDeal(DealEvt dealEvt) throws DataAccessException;
 
     public int wms_deleteDeal(List<String> list) throws DataAccessException;
+    
+    public int wms_storeOrderDeal(List<String> list) throws DataAccessException;
 }

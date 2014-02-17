@@ -7,6 +7,7 @@ import com.moemao.tgks.wms.deal.dao.DealDao;
 import com.moemao.tgks.wms.deal.entity.DealEvt;
 import com.moemao.tgks.wms.deal.entity.DealReq;
 import com.moemao.tgks.wms.deal.service.DealService;
+import com.moemao.tgks.wms.tool.WmsConstant;
 import com.moemao.tgks.wms.tool.WmsUtil;
 
 public class DealServiceImpl implements DealService
@@ -58,9 +59,6 @@ public class DealServiceImpl implements DealService
     {
         int result = wms_dealDao.wms_updateDeal(dealEvt);
         
-        // 处理商品库存数
-        this.updateNumberOfCommodity(dealEvt.getCommodityId());
-        
         return result;
     }
 
@@ -68,19 +66,29 @@ public class DealServiceImpl implements DealService
     public int deleteDeal(List<String> ids)
     {
         int result = wms_dealDao.wms_deleteDeal(ids);
-        
-        for (String id : ids)
-        {
-            // 处理商品库存数
-            this.updateNumberOfCommodity(id);
-        }
-        
+                
         return result;
+    }
+    
+    public int storeOrderDeal(String storeOrderDeal, List<String> ids)
+    {
+    	int result = 0;
+    	
+    	if (WmsConstant.DEALTYPE_0.equals(storeOrderDeal))
+    	{
+    		// 购入单子 将状态改成已入库
+    	}
+    	else if (WmsConstant.DEALTYPE_1.equals(storeOrderDeal))
+    	{
+    		// 售出单子 将状态改成已出库
+    	}
+    	
+    	return result;
     }
     
     /**
      * 更新商品的库存数目
-     * @函数功能说明：
+     * @函数功能说明：仅当 入库、出库、耗损 操作时，对库存数量进行修改
      * @创建者：Ken
      * @创建日期：2012-12-19 下午4:44:28
      * @参数：@param commodityId

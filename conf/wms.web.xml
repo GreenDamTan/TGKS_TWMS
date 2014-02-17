@@ -88,8 +88,18 @@
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
     
-    <action name="orderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="orderDeal">
-        <result name="success">/WEB-INF/jsp/wms/order/orderDeal.jsp</result>
+    <action name="orderDealManager" class="com.moemao.tgks.wms.deal.action.DealAction" method="orderDealManager">
+        <result name="success">/WEB-INF/jsp/wms/orderDeal/orderDealManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryOrderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="queryOrderDeal">
+        <result name="success">/WEB-INF/jsp/wms/orderDeal/orderDealList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <action name="storeOrderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="storeOrderDeal">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
     

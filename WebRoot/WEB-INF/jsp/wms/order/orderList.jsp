@@ -101,7 +101,7 @@ $(function() {
 	$(".orderDeal").click(function() {
 		$("#orderManagerSubmit").val("1");
 		
-		newTab("订单详情", "../wms/orderDeal.action?params=" + this.title);
+		newTab("订单详情", "../wms/orderDealManager.action?params=" + this.title);
 		
 		/*
 		$("#orderDeal").dialog("open");

@@ -34,7 +34,6 @@
 				</td>
 				<td></td><td></td>
 				<td></td><td></td>
-				<td></td><td></td>
 				<td></td>
 				<td>
 					<button id="clearDeal">重置</button>

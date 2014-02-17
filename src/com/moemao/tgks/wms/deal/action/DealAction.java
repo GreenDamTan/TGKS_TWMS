@@ -42,6 +42,11 @@ public class DealAction extends TGKSAction
      */
     private DealReq dealReq = new DealReq();
     
+    /**
+     * ﻿Deal查询条件封装对象
+     */
+    private DealReq orderDealReq = new DealReq();
+    
     private String orderDealOrderId;
     
     private String orderDealOrderType;
@@ -50,10 +55,37 @@ public class DealAction extends TGKSAction
     {
         return SUCCESS;
     }
+    
+    /**
+     * 
+     * @函数功能说明：订单页面的订单交易管理，传入一个订单号，然后对其下的交易记录进行管理
+     * @创建者：Ken
+     * @创建日期：2012-12-14 下午3:16:38
+     * @修改者：
+     * @修改日期：
+     * @修改内容：
+     * @参数：@return
+     * @return String
+     * @throws
+     */
+    public String orderDealManager()
+    {
+    	// 参数最后一位表示订单交易类型
+        String params = this.getRequest().getParameter("params").trim();
+        orderDealOrderId = params.substring(0, params.length() - 1);
+        orderDealOrderType = params.substring(params.length() - 1, params.length());
+        return SUCCESS;
+    }
 
     public String queryDeal()
     {
         list = wms_dealService.queryDeal(dealReq);
+        return SUCCESS;
+    }
+    
+    public String queryOrderDeal()
+    {
+        list = wms_dealService.queryDeal(orderDealReq);
         return SUCCESS;
     }
 
@@ -98,27 +130,17 @@ public class DealAction extends TGKSAction
         return SUCCESS;
     }
     
-    /**
-     * 
-     * @函数功能说明：订单页面的订单交易管理，传入一个订单号，然后对其下的交易记录进行管理
-     * @创建者：Ken
-     * @创建日期：2012-12-14 下午3:16:38
-     * @修改者：
-     * @修改日期：
-     * @修改内容：
-     * @参数：@return
-     * @return String
-     * @throws
-     */
-    public String orderDeal()
+    public String storeOrderDeal()
     {
-    	// 参数最后一位表示订单交易类型
-        String params = this.getRequest().getParameter("params").trim();
-        orderDealOrderId = params.substring(0, params.length() - 1);
-        orderDealOrderType = params.substring(params.length() - 1, params.length());
-        return SUCCESS;
+    	CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "DealAction.storeOrderDeal");
+    	String orderDealOrderType = this.getRequest().getParameter("orderDealOrderType");
+    	String ids = this.getRequest().getParameter("ids");
+        int result = wms_dealService.storeOrderDeal(orderDealOrderType, CommonUtil.stringToList(ids));
+    	CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.storeOrderDeal");
+    	return SUCCESS;
     }
-
+    
     /**
      * @return 返回 wms_dealService
      */
@@ -201,6 +223,16 @@ public class DealAction extends TGKSAction
     public void setOrderDealOrderType(String orderDealOrderType)
     {
         this.orderDealOrderType = orderDealOrderType;
+    }
+
+	public DealReq getOrderDealReq()
+    {
+    	return orderDealReq;
+    }
+
+	public void setOrderDealReq(DealReq orderDealReq)
+    {
+    	this.orderDealReq = orderDealReq;
     }
 
 }

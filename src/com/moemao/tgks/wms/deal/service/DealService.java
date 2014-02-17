@@ -16,6 +16,8 @@ public interface DealService
     public int updateDeal(DealEvt dealEvt);
 
     public int deleteDeal(List<String> ids);
+    
+    public int storeOrderDeal(String storeOrderDeal, List<String> ids);
 
     /**
      * 更新商品的库存数目

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/jsp/common/TGKSHeaderList.inc.jsp" %>
-<input type="hidden" id="dealListSubmit" name="dealListSubmit" value="0" />
-<div id="dealTableDiv" class="ui-widget">
-    <table id="dealTable" class="ui-widget ui-widget-content">
+<input type="hidden" id="orderDealListSubmit" name="orderDealListSubmit" value="0" />
+<div id="orderDealTableDiv" class="ui-widget">
+    <table id="orderDealTable" class="ui-widget ui-widget-content">
         <thead>
             <tr class="ui-widget-header ">
-                <th width="20"><input type="checkbox" id="allDealId" name="allDealId"/></th>
+                <th width="20"><input type="checkbox" id="allOrderDealId" name="allOrderDealId"/></th>
 				<th>商品名称</th>
 				<th>商品编号</th>
 				<th>订单号</th>
@@ -21,8 +21,8 @@
         <tbody>
 			<s:iterator  value="list" var="evt">
 				<tr>
-					<td width="20"><input type="checkbox" name="dealId" value="<s:property value='#evt.id'/>"/></td>
-					<td><b id="<s:property value='#evt.id'/>" class="dealUpdate"><s:property value="#evt.commodityName"/></b></td>
+					<td width="20"><input type="checkbox" name="orderDealId" value="<s:property value='#evt.id'/>"/></td>
+					<td><b id="<s:property value='#evt.id'/>" class="orderDealUpdate"><s:property value="#evt.commodityName"/></b></td>
 					<td><s:property value="#evt.commodityId"/></td>
 					<td><s:property value="#evt.orderId"/></td>
 					<td>
@@ -50,7 +50,7 @@
 					<td><s:property value="#evt.number"/></td>
 					<td><s:property value="#evt.price"/></td>
 					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><s:date name="#evt.dealTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+					<td><s:date name="#evt.orderDealTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 					<td><s:property value="#evt.remark"/></td>
 				</tr>
 			</s:iterator>
@@ -59,23 +59,23 @@
 </div>
 <script type="text/javascript">
 	$(function () {
-		$('#dealTable').longtable({'perPage': 10});
+		$('#orderDealTable').longtable({'perPage': 10});
 		
 		// 点击记录首栏进入更新操作
-		$(".dealUpdate").click(function() {
-			$("#dealManagerSubmit").val("1");
+		$(".orderDealUpdate").click(function() {
+			$("#orderDealManagerSubmit").val("1");
 			$("#orderDealSubmit").val("1");
-			$("#dealEdit").dialog("open");
+			$("#orderDealEdit").dialog("open");
 			var edit = $.ajax({
 				url : "../wms/editDealPage.action?id=" + this.id,
 				async : false
 			});
-			$("#dealForm").html(edit.responseText);
+			$("#orderDealForm").html(edit.responseText);
 		});
 
 		// 全选
-		$("#allDealId").click(function(){
-			var checkbox = $("#dealTable :checkbox");
+		$("#allOrderDealId").click(function(){
+			var checkbox = $("#orderDealTable :checkbox");
 			for (var i = 1; i < checkbox.length; i++)
 			{
 				if (checkbox[i].hidden == "")
