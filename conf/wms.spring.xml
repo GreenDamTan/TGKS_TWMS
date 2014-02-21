@@ -84,5 +84,19 @@
   <bean id="wms_supplierAction" class="com.moemao.tgks.wms.supplier.action.SupplierAction">
     <property name="wms_supplierService" ref="wms_supplierService" />
   </bean>
+  
+  <!-- ﻿customer_dao 配置 -->
+  <bean id="wms_customerDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.customer.dao.CustomerDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿customer_service 配置 -->
+  <bean id="wms_customerService" class="com.moemao.tgks.wms.customer.service.impl.CustomerServiceImpl">
+    <property name="wms_customerDao" ref="wms_customerDao" />
+  </bean>
+  <!-- ﻿customer_action 配置 -->
+  <bean id="wms_customerAction" class="com.moemao.tgks.wms.customer.action.CustomerAction">
+    <property name="wms_customerService" ref="wms_customerService" />
+  </bean>
 
 </beans>

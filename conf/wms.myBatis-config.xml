@@ -25,5 +25,9 @@
 		<typeAlias alias="SupplierEvt" type="com.moemao.tgks.wms.supplier.entity.SupplierEvt" />
 		<typeAlias alias="SupplierReq" type="com.moemao.tgks.wms.supplier.entity.SupplierReq" />
 		
+		<!-- wms_﻿customer -->
+		<typeAlias alias="CustomerEvt" type="com.moemao.tgks.wms.customer.entity.CustomerEvt" />
+		<typeAlias alias="CustomerReq" type="com.moemao.tgks.wms.customer.entity.CustomerReq" />
+		
 	</typeAliases>
 </configuration>

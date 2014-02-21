@@ -154,6 +154,32 @@
         <result name="success">/WEB-INF/jsp/common/success.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
+    
+    <!-- wms_customer -->
+    <action name="customerManager" class="com.moemao.tgks.wms.customer.action.CustomerAction" method="customerManager">
+        <result name="success">/WEB-INF/jsp/wms/customer/customerManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryCustomer" class="com.moemao.tgks.wms.customer.action.CustomerAction" method="queryCustomer">
+        <result name="success">/WEB-INF/jsp/wms/customer/customerList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCustomerPage" class="com.moemao.tgks.wms.customer.action.CustomerAction" method="editCustomerPage">
+        <result name="success">/WEB-INF/jsp/wms/customer/customerEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCustomer" class="com.moemao.tgks.wms.customer.action.CustomerAction" method="editCustomer">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteCustomer" class="com.moemao.tgks.wms.customer.action.CustomerAction" method="deleteCustomer">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
 
   </package>
 </struts>
