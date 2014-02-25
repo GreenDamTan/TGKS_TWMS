@@ -17,7 +17,21 @@ public interface DealService
 
     public int deleteDeal(List<String> ids);
     
-    public int storeOrderDeal(String storeOrderDeal, List<String> ids);
+    public int payOrderDeal(String orderType, List<String> ids);
+    
+    public int storeOrderDeal(String orderType, List<String> ids);
+    
+    /**
+     * 更新订单交易记录的状态
+     * @函数功能说明：
+     * @创建者：Ken
+     * @创建日期：2014-2-25 下午4:56:11
+     * @参数：@param id, status
+     * @参数：@return
+     * @return int
+     * @throws
+     */
+    public int updateOrderDealStatus(String id, String status);
 
     /**
      * 更新商品的库存数目

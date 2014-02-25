@@ -130,12 +130,27 @@ public class DealAction extends TGKSAction
         return SUCCESS;
     }
     
+    public String payOrderDeal()
+    {
+    	CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "DealAction.payOrderDeal");
+    	
+    	String orderType = this.getRequest().getParameter("orderDealOrderType");
+    	String ids = this.getRequest().getParameter("ids");
+        int result = wms_dealService.payOrderDeal(orderType, CommonUtil.stringToList(ids));
+        
+    	CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.payOrderDeal");
+    	return SUCCESS;
+    }
+    
     public String storeOrderDeal()
     {
     	CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "DealAction.storeOrderDeal");
-    	String orderDealOrderType = this.getRequest().getParameter("orderDealOrderType");
+    	
+    	String orderType = this.getRequest().getParameter("orderDealOrderType");
     	String ids = this.getRequest().getParameter("ids");
-        int result = wms_dealService.storeOrderDeal(orderDealOrderType, CommonUtil.stringToList(ids));
+        int result = wms_dealService.storeOrderDeal(orderType, CommonUtil.stringToList(ids));
+        
     	CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.storeOrderDeal");
     	return SUCCESS;

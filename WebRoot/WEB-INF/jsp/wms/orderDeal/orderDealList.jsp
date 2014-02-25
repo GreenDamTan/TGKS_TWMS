@@ -21,7 +21,7 @@
         <tbody>
 			<s:iterator  value="list" var="evt">
 				<tr>
-					<td width="20"><input type="checkbox" name="orderDealId" value="<s:property value='#evt.id'/>"/></td>
+					<td width="20"><input type="checkbox" name="orderDealId" value="<s:property value='#evt.id'/>" title="<s:property value='#evt.status'/>"/></td>
 					<td><b id="<s:property value='#evt.id'/>" class="orderDealUpdate"><s:property value="#evt.commodityName"/></b></td>
 					<td><s:property value="#evt.commodityId"/></td>
 					<td><s:property value="#evt.orderId"/></td>

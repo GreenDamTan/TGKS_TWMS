@@ -70,20 +70,60 @@ public class DealServiceImpl implements DealService
         return result;
     }
     
-    public int storeOrderDeal(String storeOrderDeal, List<String> ids)
+    /**
+     * 交易状态变更 - 过款
+     */
+    public int payOrderDeal(String orderType, List<String> ids)
     {
     	int result = 0;
     	
-    	if (WmsConstant.DEALTYPE_0.equals(storeOrderDeal))
+    	if (WmsConstant.DEALTYPE_0.equals(orderType))
+    	{
+    		// 购入单子 将状态改成已付款
+    	}
+    	else if (WmsConstant.DEALTYPE_1.equals(orderType))
+    	{
+    		// 售出单子 将状态改成已收款
+    	}
+    	
+    	return result;
+    }
+    
+    /**
+     * 交易状态变更 - 过库
+     */
+    public int storeOrderDeal(String orderType, List<String> ids)
+    {
+    	int result = 0;
+    	
+    	if (WmsConstant.DEALTYPE_0.equals(orderType))
     	{
     		// 购入单子 将状态改成已入库
     	}
-    	else if (WmsConstant.DEALTYPE_1.equals(storeOrderDeal))
+    	else if (WmsConstant.DEALTYPE_1.equals(orderType))
     	{
     		// 售出单子 将状态改成已出库
     	}
     	
     	return result;
+    }
+    
+    /**
+     * 更新订单交易记录的状态
+     * @函数功能说明：
+     * @创建者：Ken
+     * @创建日期：2014-2-25 下午4:56:11
+     * @参数：@param id, status
+     * @参数：@return
+     * @return int
+     * @throws
+     */
+    public int updateOrderDealStatus(String id, String status)
+    {
+    	DealEvt dealEvt = this.queryDealById(id);
+    	dealEvt.setStatus(status);
+    	
+    	return this.updateDeal(dealEvt);
     }
     
     /**

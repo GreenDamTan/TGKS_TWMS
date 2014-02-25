@@ -216,6 +216,62 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	// 过款按钮
+	$( "#payOrderDeal" ).button({
+		}).click(function() {
+			$("#orderDealManagerSubmit").val("1");
+			// 获取选中的记录ids
+			var ids = "";
+			var array = document.getElementsByName("orderDealId");
+			
+			for (var i=0; i<array.length; i++)
+		   	{
+		   		if (array[i].checked)
+	  			{
+	  				if (array[i].title != "0")
+	  				{
+	  					alert("存在不可操作的记录！");
+						$("#orderDealManagerSubmit").val("0");
+						return false;
+	  				}
+					
+		   			if (ids == "")
+	   				{
+		   				ids += array[i].value;
+	   				}
+		   			else
+		   			{
+		   				ids += "," + array[i].value;
+		   			}
+	  			}
+		   	}
+			
+			// 操作验证
+			if (ids == "")
+			{
+				alert("请选择至少一条记录");
+				$("#orderDealManagerSubmit").val("0");
+				return false;
+			}
+			
+			// ajax调用删除action
+			var options = { 
+				url:"../wms/payOrderDeal.action?orderDealOrderType=" + $("#orderDealOrderType").val() + "&ids=" + ids , // 提交给哪个执行
+				type:'POST', 
+				success: function(){
+					// 执行成功刷新form
+					query();
+				},
+				error:function(){ 
+					alert("操作失败"); 
+				}
+			};
+			
+			$("#orderDealConfirm").ajaxSubmit(options);
+			$("#orderDealManagerSubmit").val("0");
+			return false;
+	});
+	
 	// 过库按钮
 	$( "#storeOrderDeal" ).button({
 		}).click(function() {
@@ -223,10 +279,18 @@ $(document).ready(function(){
 			// 获取选中的记录ids
 			var ids = "";
 			var array = document.getElementsByName("orderDealId");
+			
 			for (var i=0; i<array.length; i++)
 		   	{
 		   		if (array[i].checked)
 	  			{
+	  				if (array[i].title != "1" && array[i].title != "2")
+	  				{
+	  					alert("存在不可操作的记录！");
+						$("#orderDealManagerSubmit").val("0");
+						return false;
+	  				}
+					
 		   			if (ids == "")
 	   				{
 		   				ids += array[i].value;
