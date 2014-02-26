@@ -98,6 +98,11 @@
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
     
+    <action name="payOrderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="payOrderDeal">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
     <action name="storeOrderDeal" class="com.moemao.tgks.wms.deal.action.DealAction" method="storeOrderDeal">
         <result name="success">/WEB-INF/jsp/common/success.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>

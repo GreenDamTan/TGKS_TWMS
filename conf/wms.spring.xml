@@ -51,6 +51,7 @@
   <!-- ﻿deal_service 配置 -->
   <bean id="wms_dealService" class="com.moemao.tgks.wms.deal.service.impl.DealServiceImpl">
     <property name="wms_dealDao" ref="wms_dealDao" />
+    <property name="wms_orderService" ref="wms_orderService" />
   </bean>
   <!-- ﻿deal_action 配置 -->
   <bean id="wms_dealAction" class="com.moemao.tgks.wms.deal.action.DealAction">

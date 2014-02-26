@@ -2,7 +2,8 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <table>
 	<input type="hidden" name="dealEvt.id" id="dealId" value="${dealEvt.id }" />
-	<input type="hidden" name="dealEvt.status" id="orderId" value="${dealEvt.status }" />
+	<input type="hidden" name="dealEvt.payStatus" id="orderId" value="${dealEvt.payStatus }" />
+	<input type="hidden" name="dealEvt.storeStatus" id="orderId" value="${dealEvt.storeStatus }" />
 	<tr>
 		<td><label for="commodityName">商品名称</label></td>
 		<td colspan="3"><input type="text" name="dealEvt.commodityName" id="dealCommodityName" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityName }"/></td>
@@ -14,13 +15,16 @@
 		<td><input type="text" name="dealEvt.orderId" id="dealOrderId" class="text ui-widget-content ui-corner-all" value="${dealEvt.orderId }" readonly="readonly" /></td>
 	</tr>
 	<tr>
-		<td><label for="status">交易状态</label></td>
+		<td><label for="status">过款状态</label></td>
 		<td>
-			<s:if test="dealEvt.status == 0">
-				未付款
+			<s:if test="dealEvt.payStatus == 0">
+				未过款
 			</s:if>
-			<s:elseif test="dealEvt.status == 1">
+			<s:elseif test="dealEvt.payStatus == 1">
 				已付款
+			</s:elseif> 
+			<s:elseif test="dealEvt.payStatus == 2">
+				已收款
 			</s:elseif> 
 		</td>
 		<td><label for="type">交易类型</label></td>

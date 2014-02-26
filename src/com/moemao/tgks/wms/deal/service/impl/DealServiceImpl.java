@@ -3,10 +3,12 @@ package com.moemao.tgks.wms.deal.service.impl;
 import java.util.List;
 
 import com.moemao.tgks.common.tool.CommonUtil;
+import com.moemao.tgks.common.tool.StringUtil;
 import com.moemao.tgks.wms.deal.dao.DealDao;
 import com.moemao.tgks.wms.deal.entity.DealEvt;
 import com.moemao.tgks.wms.deal.entity.DealReq;
 import com.moemao.tgks.wms.deal.service.DealService;
+import com.moemao.tgks.wms.order.service.OrderService;
 import com.moemao.tgks.wms.tool.WmsConstant;
 import com.moemao.tgks.wms.tool.WmsUtil;
 
@@ -16,6 +18,8 @@ public class DealServiceImpl implements DealService
      * ﻿DealDao
      */
     private DealDao wms_dealDao;
+    
+    private OrderService wms_orderService;
 
     @Override
     public List<DealEvt> queryDeal(DealReq dealReq)
@@ -45,7 +49,9 @@ public class DealServiceImpl implements DealService
     public int addDeal(DealEvt dealEvt)
     {
         dealEvt.setId(WmsUtil.createUniqueID());
-        dealEvt.setStatus("0");
+        dealEvt.setPayStatus(WmsConstant.PAYSTATUS_0);
+        dealEvt.setStoreStatus(WmsConstant.STORESTATUS_0);
+        
         int result = wms_dealDao.wms_addDeal(dealEvt);
         
         // 处理商品库存数
@@ -80,10 +86,18 @@ public class DealServiceImpl implements DealService
     	if (WmsConstant.DEALTYPE_0.equals(orderType))
     	{
     		// 购入单子 将状态改成已付款
+    		for (String id : ids)
+    		{
+    			this.updateOrderDealStatus(id, WmsConstant.PAYSTATUS_1, null);
+    		}
     	}
     	else if (WmsConstant.DEALTYPE_1.equals(orderType))
     	{
     		// 售出单子 将状态改成已收款
+    		for (String id : ids)
+    		{
+    			this.updateOrderDealStatus(id, WmsConstant.PAYSTATUS_2, null);
+    		}
     	}
     	
     	return result;
@@ -99,10 +113,18 @@ public class DealServiceImpl implements DealService
     	if (WmsConstant.DEALTYPE_0.equals(orderType))
     	{
     		// 购入单子 将状态改成已入库
+    		for (String id : ids)
+    		{
+    			this.updateOrderDealStatus(id, null, WmsConstant.STORESTATUS_1);
+    		}
     	}
     	else if (WmsConstant.DEALTYPE_1.equals(orderType))
     	{
     		// 售出单子 将状态改成已出库
+    		for (String id : ids)
+    		{
+    			this.updateOrderDealStatus(id, null, WmsConstant.STORESTATUS_2);
+    		}
     	}
     	
     	return result;
@@ -118,10 +140,19 @@ public class DealServiceImpl implements DealService
      * @return int
      * @throws
      */
-    public int updateOrderDealStatus(String id, String status)
+    public int updateOrderDealStatus(String id, String payStatus, String storeStatus)
     {
     	DealEvt dealEvt = this.queryDealById(id);
-    	dealEvt.setStatus(status);
+    	
+    	if (StringUtil.isNotEmpty(payStatus))
+    	{
+    		dealEvt.setPayStatus(payStatus);
+    	}
+    	
+    	if (StringUtil.isNotEmpty(storeStatus))
+    	{
+    		dealEvt.setStoreStatus(storeStatus);
+    	}
     	
     	return this.updateDeal(dealEvt);
     }
@@ -156,6 +187,16 @@ public class DealServiceImpl implements DealService
     public void setWms_dealDao(DealDao wms_dealDao)
     {
         this.wms_dealDao = wms_dealDao;
+    }
+
+	public OrderService getWms_orderService()
+    {
+    	return wms_orderService;
+    }
+
+	public void setWms_orderService(OrderService wms_orderService)
+    {
+    	this.wms_orderService = wms_orderService;
     }
 
 }

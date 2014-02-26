@@ -14,19 +14,24 @@
 				<td><label>订单号: </label></td><td><input type="text" name="orderDealReq.orderId" value="${orderDealOrderId }" id="orderDealOrderId" readonly="readonly" /></td>
 				<td><label>商品编号: </label></td><td><input type="text" name="orderDealReq.commodityId" /></td>
 				<td><label>商品名称: </label></td><td><input type="text" name="orderDealReq.commodityName" /></td>
-				<td><label>交易状态: </label>
+				<td><label>过款状态: </label>
 				<td>
-					<select name="orderDealReq.status">
+					<select name="orderDealReq.payStatus">
 						<option value="" >全部</option>
 						<option value="0" >未付款</option>
-						<option value="1" >已付款</option>
+						<s:if test="orderDealOrderType == 0">
+							<option value="1" >已付款</option>
+						</s:if>
+						<s:if test="orderDealOrderType == 0">
+							<option value="2" >已收款</option>
+						</s:if>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td><label>交易类型: </label>
 				<td>
-					<input type="hidden" id="orderDealOrderType" name="orderDealOrderType" />
+					<input type="hidden" id="orderDealOrderType" name="orderDealOrderType" value="${orderDealOrderType }"/>
 					<select name="orderDealReq.type"  id="orderDealOrderType">
 						<s:if test="orderDealOrderType == 0">
 							<option value="0" >购入</option>
@@ -118,7 +123,7 @@ $(document).ready(function(){
 		$("#orderDealSubmit").val("0");
 		
 		var options = { 
-			url:"../wms/editOrderDeal.action", // 提交给哪个执行
+			url:"../wms/editDeal.action", // 提交给哪个执行
 			type:'POST', 
 			success: function(){
 				$("#orderDealEdit").dialog("close");
@@ -144,7 +149,7 @@ $(document).ready(function(){
 		}).click(function() {
 		$("#orderDealSubmit").val("1");
 		$( "#orderDealEdit" ).dialog( "open" );
-		var edit=$.ajax({url:"../wms/editOrderDealPage.action?orderId=" + $("#orderDealOrderId").val() + "&orderType=" + $("#orderDealOrderType").val(), async:false});
+		var edit=$.ajax({url:"../wms/editDealPage.action?orderId=" + $("#orderDealOrderId").val() + "&orderType=" + $("#orderDealOrderType").val(), async:false});
 		$("#orderDealForm").html(edit.responseText);
 		return false;
 	});
@@ -158,7 +163,7 @@ $(document).ready(function(){
 		$("#orderDealSubmit").val("1");
 		// 获取选中的记录ids
 		var ids = "";
-		var array = document.getElementsByName("dealId");
+		var array = document.getElementsByName("orderDealId");
 		for (var i=0; i<array.length; i++)
 	   	{
 	   		if (array[i].checked)
@@ -184,7 +189,7 @@ $(document).ready(function(){
 		
 		// ajax调用删除action
 		var options = { 
-			url:"../wms/deleteOrderDeal.action?ids=" + ids , // 提交给哪个执行
+			url:"../wms/deleteDeal.action?ids=" + ids , // 提交给哪个执行
 			type:'POST', 
 			success: function(){
 				alert("删除成功");
@@ -261,6 +266,7 @@ $(document).ready(function(){
 				success: function(){
 					// 执行成功刷新form
 					query();
+					alert("操作成功");
 				},
 				error:function(){ 
 					alert("操作失败"); 
@@ -284,7 +290,7 @@ $(document).ready(function(){
 		   	{
 		   		if (array[i].checked)
 	  			{
-	  				if (array[i].title != "1" && array[i].title != "2")
+	  				if (array[i].alt != "0")
 	  				{
 	  					alert("存在不可操作的记录！");
 						$("#orderDealManagerSubmit").val("0");
@@ -317,6 +323,7 @@ $(document).ready(function(){
 				success: function(){
 					// 执行成功刷新form
 					query();
+					alert("操作成功");
 				},
 				error:function(){ 
 					alert("操作失败"); 

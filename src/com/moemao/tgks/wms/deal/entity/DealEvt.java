@@ -25,11 +25,36 @@ public class DealEvt
     private String orderId;
 
     /**
-     * 交易状态（0 未付款；1 已付款）
+     * 过款状态（0 未过款；1 已付款；2 已收款）
      */
-    private String status;
-
+    private String payStatus;
+    
     /**
+     * 过库状态（0 未过库；1 已入库；2 已出库）
+     */
+    private String storeStatus;
+
+    public String getPayStatus()
+    {
+    	return payStatus;
+    }
+
+	public void setPayStatus(String payStatus)
+    {
+    	this.payStatus = payStatus;
+    }
+
+	public String getStoreStatus()
+    {
+    	return storeStatus;
+    }
+
+	public void setStoreStatus(String storeStatus)
+    {
+    	this.storeStatus = storeStatus;
+    }
+
+	/**
      * 交易类型（0 购入；1 售出）
      */
     private String type;
@@ -123,23 +148,7 @@ public class DealEvt
         this.orderId = orderId;
     }
 
-    /**
-     * @return 返回 status
-     */
-    public String getStatus()
-    {
-        return status;
-    }
-
-    /**
-     * @param 对status进行赋值
-     */
-    public void setStatus(String status)
-    {
-        this.status = status;
-    }
-
-    /**
+	/**
      * @return 返回 type
      */
     public String getType()

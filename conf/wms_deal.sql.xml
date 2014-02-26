@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.deal.dao.DealDao">
 <select id="wms_queryDeal" parameterType="DealReq" resultType="DealEvt" resultMap="DealEvtMap">
         <![CDATA[  
-            SELECT t.id, t.commodityid, t.commodityname, t.orderid, t.status, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
+            SELECT t.id, t.commodityid, t.commodityname, t.orderid, t.paystatus, t.storestatus, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
         ]]>
         <where>
                 1=1
@@ -21,8 +21,11 @@
             <if test="orderId !=null and orderId !='' ">
                 AND t.ORDERID LIKE CONCAT(CONCAT('%', #{orderId}),'%')
             </if>
-            <if test="status !=null and status !='' ">
-                AND t.STATUS = #{status}
+            <if test="payStatus !=null and payStatus !='' ">
+                AND t.PAYSTATUS = #{payStatus}
+            </if>
+            <if test="storeStatus !=null and storeStatus !='' ">
+                AND t.STORETATUS = #{storeStatus}
             </if>
             <if test="type !=null and type !='' ">
                 AND t.TYPE = #{type}
@@ -50,8 +53,8 @@
 
 <insert id="wms_addDeal" parameterType="DealEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_deal (id, commodityid, commodityname, orderid, status, type, number, price, createtime, dealtime, remark) 
-            VALUES (#{id}, #{commodityId}, #{commodityName}, #{orderId}, #{status}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_deal (id, commodityid, commodityname, orderid, paystatus, storestatus, type, number, price, createtime, dealtime, remark) 
+            VALUES (#{id}, #{commodityId}, #{commodityName}, #{orderId}, #{payStatus}, #{storeStatus}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
         ]]>
 </insert>
 
@@ -61,7 +64,8 @@
                        commodityid = #{commodityId},
                        commodityname = #{commodityName},
                        orderid = #{orderId},
-                       status = #{status},
+                       paystatus = #{payStatus},
+                       storestatus = #{storeStatus},
                        type = #{type},
                        number = #{number},
                        price = #{price},

@@ -16,10 +16,11 @@
 				<td><label>商品名称: </label></td><td><input type="text" name="dealReq.commodityName" /></td>
 				<td><label>交易状态: </label>
 				<td>
-					<select name="dealReq.status">
+					<select name="dealReq.payStatus">
 						<option value="" >全部</option>
-						<option value="0" >未付款</option>
+						<option value="0" >未过款</option>
 						<option value="1" >已付款</option>
+						<option value="1" >已收款</option>
 					</select>
 				</td>
 			</tr>

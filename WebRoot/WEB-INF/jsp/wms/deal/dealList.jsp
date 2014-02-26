@@ -9,7 +9,8 @@
 				<th>商品名称</th>
 				<th>商品编号</th>
 				<th>订单号</th>
-				<th>交易状态</th>
+				<th>过款状态</th>
+				<th>过库状态</th>
 				<th>交易类型</th>
 				<th>交易数量</th>
 				<th>交易价格</th>
@@ -26,18 +27,26 @@
 					<td><s:property value="#evt.commodityId"/></td>
 					<td><s:property value="#evt.orderId"/></td>
 					<td>
-						<s:if test="#evt.status == 0">
-							未付款
+						<s:if test="#evt.payStatus == 0">
+							未过款
 						</s:if>
-						<s:elseif test="#evt.status == 1">
+						<s:elseif test="#evt.payStatus == 1">
 							已付款
 						</s:elseif>
-						<s:if test="#evt.status == 2">
-							已入库
+						<s:if test="#evt.payStatus == 2">
+							已收款
 						</s:if>
-						<s:elseif test="#evt.status == 3">
-							已出库
+					</td>
+					<td>
+						<s:if test="#evt.storeStatus == 0">
+							未过库
+						</s:if>
+						<s:elseif test="#evt.storeStatus == 1">
+							已入库
 						</s:elseif>
+						<s:if test="#evt.storeStatus == 2">
+							已出库
+						</s:if>
 					</td>
 					<td>
 						<s:if test="#evt.type == 0">
