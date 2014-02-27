@@ -6,11 +6,13 @@
 	<input type="hidden" name="dealEvt.storeStatus" id="orderId" value="${dealEvt.storeStatus }" />
 	<tr>
 		<td><label for="commodityName">商品名称</label></td>
-		<td colspan="3"><input type="text" name="dealEvt.commodityName" id="dealCommodityName" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityName }"/></td>
+		<td><input type="text" name="dealEvt.commodityName" id="dealCommodityName" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityName }"/></td>
+		<td><label>根据名称或者编号查询</label><input type="hidden" name="dealEvt.commodityId" id="dealCommodityId" value="${dealEvt.commodityId }"/></td>
+		<td><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">搜索</span></button></td>
 	</tr>
 	<tr>
-		<td><label for="commodityId">商品编号</label></td>
-		<td><input type="text" name="dealEvt.commodityId" id="dealCommodityId" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityId }"/></td>
+		<td><label for="commodityCode">商品编号</label></td>
+		<td><input type="text" name="dealEvt.commodityCode" id="dealCommodityCode" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityCode }"/></td>
 		<td><label for="orderId">订单号</label></td>
 		<td><input type="text" name="dealEvt.orderId" id="dealOrderId" class="text ui-widget-content ui-corner-all" value="${dealEvt.orderId }" readonly="readonly" /></td>
 	</tr>

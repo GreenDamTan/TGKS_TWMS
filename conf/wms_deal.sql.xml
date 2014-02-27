@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.deal.dao.DealDao">
 <select id="wms_queryDeal" parameterType="DealReq" resultType="DealEvt" resultMap="DealEvtMap">
         <![CDATA[  
-            SELECT t.id, t.commodityid, t.commodityname, t.orderid, t.paystatus, t.storestatus, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
+            SELECT t.id, t.commodityid, t.commoditycode, t.commodityname, t.orderid, t.paystatus, t.storestatus, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
         ]]>
         <where>
                 1=1
@@ -13,7 +13,10 @@
                 AND t.ID = #{id}
             </if>
             <if test="commodityId !=null and commodityId !='' ">
-                AND t.COMMODITYID LIKE CONCAT(CONCAT('%', #{commodityId}),'%')
+                AND t.COMMODITYID = #{commodityId}
+            </if>
+            <if test="commodityCode !=null and commodityCode !='' ">
+                AND t.COMMODITYCODE LIKE CONCAT(CONCAT('%', #{commodityCode}),'%')
             </if>
             <if test="commodityName !=null and commodityName !='' ">
                 AND t.COMMODITYNAME LIKE CONCAT(CONCAT('%', #{commodityName}),'%')
@@ -53,8 +56,8 @@
 
 <insert id="wms_addDeal" parameterType="DealEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_deal (id, commodityid, commodityname, orderid, paystatus, storestatus, type, number, price, createtime, dealtime, remark) 
-            VALUES (#{id}, #{commodityId}, #{commodityName}, #{orderId}, #{payStatus}, #{storeStatus}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_deal (id, commodityid, commoditycode, commodityname, orderid, paystatus, storestatus, type, number, price, createtime, dealtime, remark) 
+            VALUES (#{id}, #{commodityId}, #{commodityCode}, #{commodityName}, #{orderId}, #{payStatus}, #{storeStatus}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
         ]]>
 </insert>
 
@@ -62,6 +65,7 @@
         <![CDATA[  
             UPDATE t_tgks_wms_deal SET 
                        commodityid = #{commodityId},
+                       commoditycode = #{commodityCode},
                        commodityname = #{commodityName},
                        orderid = #{orderId},
                        paystatus = #{payStatus},

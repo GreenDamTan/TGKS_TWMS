@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_commodity` (
 DROP TABLE IF EXISTS `t_tgks_wms_deal`;
 CREATE TABLE IF NOT EXISTS `t_tgks_wms_deal` (
   `id` varchar(30) NOT NULL COMMENT '表唯一主键',
-  `commodityid` varchar(30) NOT NULL COMMENT '商品信息ID',
+  `commodityid` varchar(30) NOT NULL COMMENT '商品信息ID',  
+  `commoditycode` varchar(30) NOT NULL COMMENT '商品信息编号',
   `commodityname` varchar(200) NOT NULL COMMENT '商品名称',
   `orderid` varchar(30) NOT NULL COMMENT '订单表ID',
   `paystatus` varchar(3) NOT NULL default '0' COMMENT '交易状态（0 未付款；1 已付款；2 已收款）',  

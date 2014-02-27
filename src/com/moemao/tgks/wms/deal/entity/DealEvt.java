@@ -15,6 +15,11 @@ public class DealEvt
     private String commodityId;
 
     /**
+     * 商品编号
+     */
+    private String commodityCode;
+
+    /**
      * 商品名称
      */
     private String commodityName;
@@ -146,6 +151,16 @@ public class DealEvt
     public void setOrderId(String orderId)
     {
         this.orderId = orderId;
+    }
+
+	public String getCommodityCode()
+    {
+    	return commodityCode;
+    }
+
+	public void setCommodityCode(String commodityCode)
+    {
+    	this.commodityCode = commodityCode;
     }
 
 	/**

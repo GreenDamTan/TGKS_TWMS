@@ -12,7 +12,7 @@
 		<table>
 			<tr>
 				<td><label>订单号: </label></td><td><input type="text" name="orderDealReq.orderId" value="${orderDealOrderId }" id="orderDealOrderId" readonly="readonly" /></td>
-				<td><label>商品编号: </label></td><td><input type="text" name="orderDealReq.commodityId" /></td>
+				<td><label>商品编号: </label></td><td><input type="text" name="orderDealReq.commodityCode" /></td>
 				<td><label>商品名称: </label></td><td><input type="text" name="orderDealReq.commodityName" /></td>
 				<td><label>过款状态: </label>
 				<td>

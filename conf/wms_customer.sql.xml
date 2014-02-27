@@ -9,6 +9,9 @@
         ]]>
         <where>
                 1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
             <if test="name !=null and name !='' ">
                 AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
             </if>

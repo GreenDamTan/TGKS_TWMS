@@ -6,6 +6,7 @@
     <resultMap id="DealEvtMap" type="DealEvt">
         <id property="id" column="ID" />
         <result property="commodityId" column="COMMODITYID" />
+        <result property="commodityCode" column="COMMODITYCODE" />
         <result property="commodityName" column="COMMODITYNAME" />
         <result property="orderId" column="ORDERID" />
         <result property="payStatus" column="PAYSTATUS" />

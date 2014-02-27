@@ -24,7 +24,7 @@
 				<tr>
 					<td width="20"><input type="checkbox" name="orderDealId" value="<s:property value='#evt.id'/>" title="<s:property value='#evt.payStatus'/>" alt="<s:property value='#evt.storeStatus'/>" /></td>
 					<td><b id="<s:property value='#evt.id'/>" class="orderDealUpdate"><s:property value="#evt.commodityName"/></b></td>
-					<td><s:property value="#evt.commodityId"/></td>
+					<td><s:property value="#evt.commodityCode"/></td>
 					<td><s:property value="#evt.orderId"/></td>
 					<td>
 						<s:if test="#evt.payStatus == 0">

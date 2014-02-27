@@ -30,8 +30,7 @@ public class CustomerServiceImpl implements CustomerService
 		CustomerReq customerReq = new CustomerReq();
 		customerReq.setId(id);
 		CustomerEvt customerEvt = null;
-		List<CustomerEvt> customerList = wms_customerDao
-		        .wms_queryCustomer(customerReq);
+		List<CustomerEvt> customerList = wms_customerDao.wms_queryCustomer(customerReq);
 		if (!CommonUtil.isEmpty(customerList))
 		{
 			customerEvt = customerList.get(0);
