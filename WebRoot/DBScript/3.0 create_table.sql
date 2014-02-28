@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_commodity` (
   `netprice` double NOT NULL default '0' COMMENT '网上参考报价',
   `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
   `remark` varchar(500) default NULL COMMENT '备注',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商品信息表';
 
 --

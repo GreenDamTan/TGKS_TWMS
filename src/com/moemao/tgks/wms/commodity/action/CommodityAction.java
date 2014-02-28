@@ -2,6 +2,8 @@ package com.moemao.tgks.wms.commodity.action;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -54,6 +56,11 @@ public class CommodityAction extends TGKSAction
      * ﻿Commodity查询条件封装对象
      */
     private CommodityReq commodityReq = new CommodityReq();
+    
+    /**
+     * 返回前台的JSON
+     */
+    private String jsonString;
 
     public String commodityManager()
     {
@@ -65,6 +72,20 @@ public class CommodityAction extends TGKSAction
     {
         list = wms_commodityService.queryCommodity(commodityReq);
         return SUCCESS;
+    }
+    
+    public String queryDealPageCommodity()
+    {
+    	String commodityName = this.getRequest().getParameter("commodityName");
+    	String commodityCode = this.getRequest().getParameter("commodityCode");
+    	
+    	CommodityReq commodityReq = new CommodityReq();
+    	commodityReq.setName(commodityName);
+    	commodityReq.setCode(commodityCode);
+    	
+    	list = wms_commodityService.queryCommodity(commodityReq);
+    	
+    	return SUCCESS;
     }
 
     public String editCommodityPage()
@@ -225,6 +246,16 @@ public class CommodityAction extends TGKSAction
     public void setCategoryList(List<CategoryEvt> categoryList)
     {
         this.categoryList = categoryList;
+    }
+
+	public String getJsonString()
+    {
+    	return jsonString;
+    }
+
+	public void setJsonString(String jsonString)
+    {
+    	this.jsonString = jsonString;
     }
 
 }

@@ -168,6 +168,13 @@ $(document).ready(function(){
 	   	{
 	   		if (array[i].checked)
   			{
+  				if (array[i].title != "0" || array[i].alt != "0")
+  				{
+  					alert("存在不可操作的记录！");
+					$("#orderDealManagerSubmit").val("0");
+					return false;
+  				}
+  				
 	   			if (ids == "")
    				{
 	   				ids += array[i].value;

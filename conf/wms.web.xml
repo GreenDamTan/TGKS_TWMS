@@ -41,6 +41,11 @@
         <result name="success">/WEB-INF/jsp/wms/commodity/commodityList.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
+    
+    <action name="queryDealPageCommodity" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="queryDealPageCommodity">
+        <result name="success">/WEB-INF/jsp/wms/commodity/commodityDataList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
 
     <action name="editCommodityPage" class="com.moemao.tgks.wms.commodity.action.CommodityAction" method="editCommodityPage">
         <result name="success">/WEB-INF/jsp/wms/commodity/commodityEdit.jsp</result>

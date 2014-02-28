@@ -7,8 +7,8 @@
 	<tr>
 		<td><label for="commodityName">商品名称</label></td>
 		<td><input type="text" name="dealEvt.commodityName" id="dealCommodityName" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityName }"/></td>
-		<td><label>根据名称或者编号查询</label><input type="hidden" name="dealEvt.commodityId" id="dealCommodityId" value="${dealEvt.commodityId }"/></td>
-		<td><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">搜索</span></button></td>
+		<td><label>商品ID</label></td>
+		<td><input type="text" name="dealEvt.commodityId" id="dealCommodityId" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityId }" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td><label for="commodityCode">商品编号</label></td>
@@ -69,4 +69,62 @@
 	</tr>
 </table>
 <script type="text/javascript">
+$(function() 
+{
+	var data = [];
+	var nameTags = [];
+	var json = [];
+    
+    $("#dealCommodityName" ).change(function(){
+    	$.ajax({
+             type : "POST",
+             url: "../wms/queryDealPageCommodity.action?commodityName=" + $("#dealCommodityName").val(),
+             success: function(msg){
+             	 data = new Array();
+                 data = msg.split("♂");
+                 idTags = new Array();
+                 nameTags = new Array();
+                 codeTags = new Array();
+                 json = [];
+                 var str = [];
+                 for (var i=0; i < data.length - 1; i++)
+                 {
+                 	str = data[i].split("|");
+                 	nameTags.push(str[1].trim()+"|"+str[2].trim()+"|"+str[0].trim());
+                 	json.push("({ id: \"" + str[0].trim() + "\", name: \"" + str[1].trim() + "\", code: \"" + str[2].trim() + "\"})");
+                 }
+                 
+			     $( "#dealCommodityName" ).autocomplete({
+			     	source: nameTags,
+			     	focus: function( event, ui ) {
+				        $( "#dealCommodityName" ).val( ui.item.value );
+				        return false;
+				      },
+			     	select: function(event, ui){
+			     		var datas = ui.item.value.split("|");
+			     		$( "#dealCommodityId" ).val(datas[2]);
+			     		$( "#dealCommodityName" ).val(datas[0]);
+			     		$( "#dealCommodityCode" ).val(datas[1]);
+			     		return false;
+			     	}
+			     });
+             }
+         });
+    });
+    
+    $( "#dealCommodityName" ).autocomplete({
+    	source: nameTags,
+    	focus: function( event, ui ) {
+        $( "#dealCommodityName" ).val( ui.item.value );
+        return false;
+      },
+    	select: function(event, ui){
+    		var datas = ui.item.value.split("|");
+    		$( "#dealCommodityId" ).val(datas[2]);
+    		$( "#dealCommodityName" ).val(datas[0]);
+    		$( "#dealCommodityCode" ).val(datas[1]);
+    		return false;
+    	}
+    });
+});
 </script>
