@@ -38,10 +38,10 @@ public interface DealService
      * @函数功能说明：
      * @创建者：Ken
      * @创建日期：2012-12-19 下午4:44:28
-     * @参数：@param commodityId
+     * @参数：@param commodityId, num
      * @参数：@return
      * @return int
      * @throws
      */
-    public int updateNumberOfCommodity(String commodityId);
+    public int updateCommodityNum(String commodityId, int num);
 }

@@ -52,6 +52,7 @@
   <bean id="wms_dealService" class="com.moemao.tgks.wms.deal.service.impl.DealServiceImpl">
     <property name="wms_dealDao" ref="wms_dealDao" />
     <property name="wms_orderService" ref="wms_orderService" />
+    <property name="wms_commodityService" ref="wms_commodityService" />
   </bean>
   <!-- ﻿deal_action 配置 -->
   <bean id="wms_dealAction" class="com.moemao.tgks.wms.deal.action.DealAction">
@@ -98,6 +99,34 @@
   <!-- ﻿customer_action 配置 -->
   <bean id="wms_customerAction" class="com.moemao.tgks.wms.customer.action.CustomerAction">
     <property name="wms_customerService" ref="wms_customerService" />
+  </bean>
+  
+  <!-- ﻿currency_dao 配置 -->
+  <bean id="wms_currencyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.currency.dao.CurrencyDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿currency_service 配置 -->
+  <bean id="wms_currencyService" class="com.moemao.tgks.wms.currency.service.impl.CurrencyServiceImpl">
+    <property name="wms_currencyDao" ref="wms_currencyDao" />
+  </bean>
+  <!-- ﻿currency_action 配置 -->
+  <bean id="wms_currencyAction" class="com.moemao.tgks.wms.currency.action.CurrencyAction">
+    <property name="wms_currencyService" ref="wms_currencyService" />
+  </bean>
+  
+  <!-- ﻿currencydetail_dao 配置 -->
+  <bean id="wms_currencyDetailDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.currencydetail.dao.CurrencyDetailDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿currencydetail_service 配置 -->
+  <bean id="wms_currencyDetailService" class="com.moemao.tgks.wms.currencydetail.service.impl.CurrencyDetailServiceImpl">
+    <property name="wms_currencyDetailDao" ref="wms_currencyDetailDao" />
+  </bean>
+  <!-- ﻿currencydetail_action 配置 -->
+  <bean id="wms_currencyDetailAction" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction">
+    <property name="wms_currencyDetailService" ref="wms_currencyDetailService" />
   </bean>
 
 </beans>

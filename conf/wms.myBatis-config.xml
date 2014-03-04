@@ -29,5 +29,13 @@
 		<typeAlias alias="CustomerEvt" type="com.moemao.tgks.wms.customer.entity.CustomerEvt" />
 		<typeAlias alias="CustomerReq" type="com.moemao.tgks.wms.customer.entity.CustomerReq" />
 		
+		<!-- wms_﻿currency -->
+		<typeAlias alias="CurrencyEvt" type="com.moemao.tgks.wms.currency.entity.CurrencyEvt" />
+		<typeAlias alias="CurrencyReq" type="com.moemao.tgks.wms.currency.entity.CurrencyReq" />
+		
+		<!-- wms_﻿currencydetail -->
+		<typeAlias alias="CurrencyDetailEvt" type="com.moemao.tgks.wms.currencydetail.entity.CurrencyDetailEvt" />
+		<typeAlias alias="CurrencyDetailReq" type="com.moemao.tgks.wms.currencydetail.entity.CurrencyDetailReq" />
+		
 	</typeAliases>
 </configuration>

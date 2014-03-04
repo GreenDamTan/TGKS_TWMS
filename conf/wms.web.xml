@@ -190,6 +190,58 @@
         <result name="success">/WEB-INF/jsp/common/success.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
+    
+    <!-- wms_currency -->
+    <action name="currencyManager" class="com.moemao.tgks.wms.currency.action.CurrencyAction" method="currencyManager">
+        <result name="success">/WEB-INF/jsp/wms/currency/currencyManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryCurrency" class="com.moemao.tgks.wms.currency.action.CurrencyAction" method="queryCurrency">
+        <result name="success">/WEB-INF/jsp/wms/currency/currencyList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCurrencyPage" class="com.moemao.tgks.wms.currency.action.CurrencyAction" method="editCurrencyPage">
+        <result name="success">/WEB-INF/jsp/wms/currency/currencyEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCurrency" class="com.moemao.tgks.wms.currency.action.CurrencyAction" method="editCurrency">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteCurrency" class="com.moemao.tgks.wms.currency.action.CurrencyAction" method="deleteCurrency">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_currencydetail -->
+    <action name="currencyDetailManager" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="currencyDetailManager">
+        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryCurrencyDetail" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="queryCurrencyDetail">
+        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCurrencyDetailPage" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="editCurrencyDetailPage">
+        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editCurrencyDetail" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="editCurrencyDetail">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteCurrencyDetail" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="deleteCurrencyDetail">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
 
   </package>
 </struts>

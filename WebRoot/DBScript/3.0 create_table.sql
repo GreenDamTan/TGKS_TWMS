@@ -127,3 +127,41 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_customer` (
   `remark` varchar(500) default NULL COMMENT '备注',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='客户信息表';
+
+
+
+--
+-- 表的结构 `t_tgks_wms_currency`
+--
+DROP TABLE IF EXISTS `t_tgks_wms_currency`;
+CREATE TABLE IF NOT EXISTS `t_tgks_wms_currency` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键（0 私款RMB；1 公款RMB）',
+  `name` varchar(30) NOT NULL COMMENT '名称',
+  `type` varchar(3) NOT NULL COMMENT '币种',
+  `code` varchar(10) default NULL COMMENT '缩写',
+  `unit` varchar(10) NOT NULL COMMENT '单位',
+  `num` double NOT NULL default '0' COMMENT '交易数量',
+  `remark` varchar(500) default NULL COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='货币信息表';
+
+
+--
+-- 表的结构 `t_tgks_wms_currencydetail`
+--
+DROP TABLE IF EXISTS `t_tgks_wms_currencydetail`;
+CREATE TABLE IF NOT EXISTS `t_tgks_wms_currencydetail` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键',
+  `currencyid` varchar(30) NOT NULL COMMENT '货币ID（0 私款RMB；1 公款RMB）',
+  `name` varchar(30) NOT NULL COMMENT '名称',
+  `type` varchar(3) NOT NULL COMMENT '币种',
+  `code` varchar(10) default NULL COMMENT '缩写',
+  `unit` varchar(10) NOT NULL COMMENT '单位',
+  `orderId` varchar(10) NOT NULL COMMENT '订单ID',
+  `orderOrderId` varchar(10) NOT NULL COMMENT '订单编号',
+  `dealId` varchar(10) NOT NULL COMMENT '交易ID',
+  `num` double NOT NULL default '0' COMMENT '交易数量',
+  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
+  `remark` varchar(500) default NULL COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='货币详情信息表';

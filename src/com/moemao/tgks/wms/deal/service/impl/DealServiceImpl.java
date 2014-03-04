@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.moemao.tgks.common.tool.CommonUtil;
 import com.moemao.tgks.common.tool.StringUtil;
+import com.moemao.tgks.wms.commodity.entity.CommodityEvt;
+import com.moemao.tgks.wms.commodity.service.CommodityService;
 import com.moemao.tgks.wms.deal.dao.DealDao;
 import com.moemao.tgks.wms.deal.entity.DealEvt;
 import com.moemao.tgks.wms.deal.entity.DealReq;
@@ -20,6 +22,8 @@ public class DealServiceImpl implements DealService
     private DealDao wms_dealDao;
     
     private OrderService wms_orderService;
+    
+    private CommodityService wms_commodityService;
 
     @Override
     public List<DealEvt> queryDeal(DealReq dealReq)
@@ -53,9 +57,6 @@ public class DealServiceImpl implements DealService
         dealEvt.setStoreStatus(WmsConstant.STORESTATUS_0);
         
         int result = wms_dealDao.wms_addDeal(dealEvt);
-        
-        // 处理商品库存数
-        this.updateNumberOfCommodity(dealEvt.getCommodityId());
         
         return result;
     }
@@ -105,16 +106,24 @@ public class DealServiceImpl implements DealService
     
     /**
      * 交易状态变更 - 过库
+     * 过库同时处理库存管理记录中的数量
+     * 入库是加入deal的数量，出库时减少
      */
     public int storeOrderDeal(String orderType, List<String> ids)
     {
     	int result = 0;
+    	DealEvt dealEvt = null;
     	
     	if (WmsConstant.DEALTYPE_0.equals(orderType))
     	{
     		// 购入单子 将状态改成已入库
     		for (String id : ids)
-    		{
+    		{   			
+    			dealEvt = this.queryDealById(id);
+    	        
+    	        // 处理商品库存数 增加
+    	        this.updateCommodityNum(dealEvt.getCommodityId(), dealEvt.getNumber());
+    	        // 更新Deal状态 已入库
     			this.updateOrderDealStatus(id, null, WmsConstant.STORESTATUS_1);
     		}
     	}
@@ -123,6 +132,12 @@ public class DealServiceImpl implements DealService
     		// 售出单子 将状态改成已出库
     		for (String id : ids)
     		{
+    			dealEvt = this.queryDealById(id);
+    			
+    	        // 处理商品库存数 减少
+    			this.updateCommodityNum(dealEvt.getCommodityId(), (0 - dealEvt.getNumber()));
+    	        
+    	        // 更新Deal状态 已出库
     			this.updateOrderDealStatus(id, null, WmsConstant.STORESTATUS_2);
     		}
     	}
@@ -162,15 +177,19 @@ public class DealServiceImpl implements DealService
      * @函数功能说明：仅当 入库、出库、耗损 操作时，对库存数量进行修改
      * @创建者：Ken
      * @创建日期：2012-12-19 下午4:44:28
-     * @参数：@param commodityId
+     * @参数：@param commodityId 库存商品ID
+     * @参数：@param num 库存商品数量 入库正数，出库负数，调用前已经判断
      * @参数：@return
      * @return int
      * @throws
      */
     @Override
-    public int updateNumberOfCommodity(String commodityId)
+    public int updateCommodityNum(String commodityId, int num)
     {
-        return 0;
+    	CommodityEvt commodityEvt = wms_commodityService.queryCommodityById(commodityId);
+    	commodityEvt.setNumber(commodityEvt.getNumber() + num);
+    	
+    	return this.wms_commodityService.updateCommodity(commodityEvt);
     }
 
     /**
@@ -197,6 +216,16 @@ public class DealServiceImpl implements DealService
 	public void setWms_orderService(OrderService wms_orderService)
     {
     	this.wms_orderService = wms_orderService;
+    }
+
+	public CommodityService getWms_commodityService()
+    {
+    	return wms_commodityService;
+    }
+
+	public void setWms_commodityService(CommodityService wms_commodityService)
+    {
+    	this.wms_commodityService = wms_commodityService;
     }
 
 }
