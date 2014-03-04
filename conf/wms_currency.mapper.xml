@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.currency.dao.CurrencyDao">
+    <resultMap id="CurrencyEvtMap" type="CurrencyEvt">
+        <id property="id" column="ID" />
+        <result property="name" column="NAME" />
+        <result property="type" column="TYPE" />
+        <result property="code" column="CODE" />
+        <result property="unit" column="UNIT" />
+        <result property="num" column="NUM" />
+        <result property="remark" column="REMARK" />
+    </resultMap>
+</mapper>
