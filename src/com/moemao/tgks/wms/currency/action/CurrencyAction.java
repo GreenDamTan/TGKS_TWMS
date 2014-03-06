@@ -41,7 +41,7 @@ public class CurrencyAction extends TGKSAction
 	/**
 	 * ﻿Currency查询条件封装对象
 	 */
-	private CurrencyReq currencyReq;
+	private CurrencyReq currencyReq = new CurrencyReq();
 	
 	public String currencyManager()
 	{

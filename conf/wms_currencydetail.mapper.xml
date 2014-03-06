@@ -14,7 +14,7 @@
         <result property="orderOrderId" column="ORDERORDERID" />
         <result property="dealId" column="DEALID" />
         <result property="num" column="NUM" />
-        <result property="creaTime" column="CREATIME" />
+        <result property="createTime" column="CREATETIME" />
         <result property="remark" column="REMARK" />
     </resultMap>
 </mapper>

@@ -41,7 +41,7 @@ public class CurrencyDetailAction extends TGKSAction
 	/**
 	 * ﻿CurrencyDetail查询条件封装对象
 	 */
-	private CurrencyDetailReq currencyDetailReq;
+	private CurrencyDetailReq currencyDetailReq = new CurrencyDetailReq();;
 	
 	public String currencyDetailManager()
 	{

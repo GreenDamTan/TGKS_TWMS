@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.currencydetail.dao.CurrencyDetailDao">
 <select id="wms_queryCurrencyDetail" parameterType="CurrencyDetailReq" resultType="CurrencyDetailEvt" resultMap="CurrencyDetailEvtMap">
         <![CDATA[  
-            SELECT t.id, t.currencyid, t.name, t.type, t.code, t.unit, t.orderid, t.orderorderid, t.dealid, t.num, t,creatime, t.remark FROM t_tgks_wms_currencydetail t
+            SELECT t.id, t.currencyid, t.name, t.type, t.code, t.unit, t.orderid, t.orderorderid, t.dealid, t.num, t.createtime, t.remark FROM t_tgks_wms_currencydetail t
         ]]>
         <where>
                 1=1
@@ -39,6 +39,12 @@
             <if test="num !=null and num !='' ">
                 AND t.NUM = #{num}
             </if>
+            <if test="createTimeStart !=null and createTimeStart !='' ">
+                AND t.CREATETIME >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd !=null and createTimeEnd !='' ">
+                AND #{createTimeEnd} >= t.CREATETIME
+            </if>
             <if test="remark !=null and remark !='' ">
                 AND t.REMARK = #{remark}
             </if>
@@ -50,8 +56,8 @@
 
 <insert id="wms_addCurrencyDetail" parameterType="CurrencyDetailEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_currencydetail (id, currencyid, name, type, code, unit, orderid, orderorderid, dealid, num, creatime, remark) 
-            VALUES (#{id}, #{currencyId}, #{name}, #{type}, #{code}, #{unit}, #{orderId}, #{orderOrderId}, #{dealId}, #{num}, #{creaTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_currencydetail (id, currencyid, name, type, code, unit, orderid, orderorderid, dealid, num, createtime, remark) 
+            VALUES (#{id}, #{currencyId}, #{name}, #{type}, #{code}, #{unit}, #{orderId}, #{orderOrderId}, #{dealId}, #{num}, #{createTime}, #{remark}) 
         ]]>
 </insert>
 

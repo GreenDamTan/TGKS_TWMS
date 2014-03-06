@@ -57,7 +57,7 @@ public class CurrencyDetailEvt
 	/**
 	 * 创建时间
 	 */
-	private Date creaTime;
+	private Date createTime;
 	
 	/**
 	 * 备注
@@ -240,14 +240,14 @@ public class CurrencyDetailEvt
 		this.remark = remark;
 	}
 
-	public Date getCreaTime()
+	public Date getCreateTime()
     {
-    	return creaTime;
+    	return createTime;
     }
 
-	public void setCreaTime(Date creaTime)
+	public void setCreateTime(Date createTime)
     {
-    	this.creaTime = creaTime;
+    	this.createTime = createTime;
     }
 	
 }

@@ -219,17 +219,17 @@
     
     <!-- wms_currencydetail -->
     <action name="currencyDetailManager" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="currencyDetailManager">
-        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailManager.jsp</result>
+        <result name="success">/WEB-INF/jsp/wms/currencyDetail/currencyDetailManager.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
 
     <action name="queryCurrencyDetail" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="queryCurrencyDetail">
-        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailList.jsp</result>
+        <result name="success">/WEB-INF/jsp/wms/currencyDetail/currencyDetailList.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
 
     <action name="editCurrencyDetailPage" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction" method="editCurrencyDetailPage">
-        <result name="success">/WEB-INF/jsp/wms/currencydetail/currencyDetailEdit.jsp</result>
+        <result name="success">/WEB-INF/jsp/wms/currencyDetail/currencyDetailEdit.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
 

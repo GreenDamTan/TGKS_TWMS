@@ -1,5 +1,7 @@
 package com.moemao.tgks.wms.currencydetail.entity;
 
+import java.util.Date;
+
 public class CurrencyDetailReq extends CurrencyDetailEvt
 {
 	
@@ -7,6 +9,10 @@ public class CurrencyDetailReq extends CurrencyDetailEvt
 	 * 排序字段
 	 */
 	private String sortSql;
+	
+	private Date createTimeStart;
+	
+	private Date createTimeEnd;
 	
 	/**
 	 * @return 返回 排序字段
@@ -23,5 +29,25 @@ public class CurrencyDetailReq extends CurrencyDetailEvt
 	{
 		this.sortSql = sortSql;
 	}
+
+	public Date getCreateTimeStart()
+    {
+    	return createTimeStart;
+    }
+
+	public void setCreateTimeStart(Date createTimeStart)
+    {
+    	this.createTimeStart = createTimeStart;
+    }
+
+	public Date getCreateTimeEnd()
+    {
+    	return createTimeEnd;
+    }
+
+	public void setCreateTimeEnd(Date createTimeEnd)
+    {
+    	this.createTimeEnd = createTimeEnd;
+    }
 	
 }
