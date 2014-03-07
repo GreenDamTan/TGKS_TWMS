@@ -32,7 +32,7 @@
 
 <div id="currencyDetailDiv"></div>
 
-<div id="currencyDetailEdit" title="CurrencyDetail Edit">
+<div id="currencyDetailEdit" title="资金流动信息">
 	<form id="currencyDetailForm" action="../wms/editCurrencyDetail.action" method="post"></form>
 </div>
 

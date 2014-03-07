@@ -6,7 +6,16 @@
         <thead>
             <tr class="ui-widget-header ">
                 <th width="20"><input type="checkbox" id="allCurrencyDetailId" name="allCurrencyDetailId"  /></th>
-				<th>currencyDetail</th>
+				<th>名称</th>
+				<th>币种</th>
+				<th>缩写</th>
+				<th>数量</th>
+				<th>单位</th>
+				<th>订单ID</th>
+				<th>订单编号</th>
+				<th>交易ID</th>
+				<th>创建时间</th>
+				<th>备注</th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +23,15 @@
 				<tr>
 					<td width="20"><input type="checkbox" name="currencyDetailId" value="<s:property value='#evt.id'/>" /></td>
 					<td><b id="<s:property value='#evt.id'/>" class="currencyDetailUpdate"><s:property value="#evt.name"/></b></td>
+					<td><s:property value="#evt.type"/></td>
+					<td><s:property value="#evt.code"/></td>
+					<td><s:property value="#evt.num"/></td>
+					<td><s:property value="#evt.unit"/></td>
+					<td><s:property value="#evt.orderId"/></td>
+					<td><s:property value="#evt.orderOrderId"/></td>
+					<td><s:property value="#evt.dealId"/></td>
+					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+					<td><s:property value="#evt.remark"/></td>
 				</tr>
 			</s:iterator>
 		</tbody>

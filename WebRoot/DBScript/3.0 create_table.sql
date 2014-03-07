@@ -137,7 +137,7 @@ DROP TABLE IF EXISTS `t_tgks_wms_currency`;
 CREATE TABLE IF NOT EXISTS `t_tgks_wms_currency` (
   `id` varchar(30) NOT NULL COMMENT '表唯一主键（0 私款RMB；1 公款RMB）',
   `name` varchar(30) NOT NULL COMMENT '名称',
-  `type` varchar(3) NOT NULL COMMENT '币种',
+  `type` varchar(10) NOT NULL COMMENT '币种',
   `code` varchar(10) default NULL COMMENT '缩写',
   `unit` varchar(10) NOT NULL COMMENT '单位',
   `num` double NOT NULL default '0' COMMENT '交易数量',
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_currencydetail` (
   `id` varchar(30) NOT NULL COMMENT '表唯一主键',
   `currencyid` varchar(30) NOT NULL COMMENT '货币ID（0 私款RMB；1 公款RMB）',
   `name` varchar(30) NOT NULL COMMENT '名称',
-  `type` varchar(3) NOT NULL COMMENT '币种',
+  `type` varchar(10) NOT NULL COMMENT '币种',
   `code` varchar(10) default NULL COMMENT '缩写',
   `unit` varchar(10) NOT NULL COMMENT '单位',
   `orderId` varchar(10) NOT NULL COMMENT '订单ID',

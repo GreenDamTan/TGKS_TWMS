@@ -6,14 +6,24 @@
         <thead>
             <tr class="ui-widget-header ">
                 <th width="20"><input type="checkbox" id="allCurrencyId" name="allCurrencyId"  /></th>
-				<th>currency</th>
+				<th>名称</th>
+				<th>币种</th>
+				<th>缩写</th>
+				<th>数量</th>
+				<th>单位</th>
+				<th>备注</th>
             </tr>
         </thead>
         <tbody>
 			<s:iterator  value="list" var="evt">
 				<tr>
-					<td width="20"><input type="checkbox" name="currencyId" value="<s:property value='#evt.id'/>" /></td>
+					<td width="20"><s:if test="#evt.num == 0"><input type="checkbox" name="currencyId" value="<s:property value='#evt.id'/>" /></s:if></td>
 					<td><b id="<s:property value='#evt.id'/>" class="currencyUpdate"><s:property value="#evt.name"/></b></td>
+					<td><s:property value="#evt.type"/></td>
+					<td><s:property value="#evt.code"/></td>
+					<td><s:property value="#evt.num"/></td>
+					<td><s:property value="#evt.unit"/></td>
+					<td><s:property value="#evt.remark"/></td>
 				</tr>
 			</s:iterator>
 		</tbody>
