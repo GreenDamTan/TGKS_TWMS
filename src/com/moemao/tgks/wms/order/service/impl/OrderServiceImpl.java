@@ -60,6 +60,11 @@ public class OrderServiceImpl implements OrderService
     {
         return wms_orderDao.wms_deleteOrder(ids);
     }
+    
+    public int completeOrder(List<String> ids)
+    {
+    	return wms_orderDao.wms_completeOrder(ids);
+    }
 
     /**
      * @return 返回 wms_orderDao

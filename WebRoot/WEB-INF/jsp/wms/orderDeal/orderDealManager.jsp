@@ -11,7 +11,8 @@
 	<form id="orderDealReq" action="../wms/queryOrderDeal.action" method="post">
 		<table>
 			<tr>
-				<td><label>订单号: </label></td><td><input type="text" name="orderDealReq.orderId" value="${orderDealOrderId }" id="orderDealOrderId" readonly="readonly" /></td>
+				<input type="hidden" name="orderDealReq.orderId" id="orderDealOrderId" value="${orderDealOrderId}" />
+				<td><label>订单编号: </label></td><td><input type="text" name="orderDealReq.orderCode" value="${orderDealOrderCode }" id="orderDealOrderCode" readonly="readonly" /></td>
 				<td><label>商品编号: </label></td><td><input type="text" name="orderDealReq.commodityCode" /></td>
 				<td><label>商品名称: </label></td><td><input type="text" name="orderDealReq.commodityName" /></td>
 				<td><label>过款状态: </label>
@@ -149,7 +150,7 @@ $(document).ready(function(){
 		}).click(function() {
 		$("#orderDealSubmit").val("1");
 		$( "#orderDealEdit" ).dialog( "open" );
-		var edit=$.ajax({url:"../wms/editDealPage.action?orderId=" + $("#orderDealOrderId").val() + "&orderType=" + $("#orderDealOrderType").val(), async:false});
+		var edit=$.ajax({url:"../wms/editDealPage.action?orderId=" + $("#orderDealOrderId").val() + "&orderCode=" + $("#orderDealOrderCode").val() + "&orderType=" + $("#orderDealOrderType").val(), async:false});
 		$("#orderDealForm").html(edit.responseText);
 		return false;
 	});

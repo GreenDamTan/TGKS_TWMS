@@ -16,7 +16,7 @@
 	</tr>
 	<tr>
 		<td><label>数量</label></td>
-		<td>${currencyEvt.num }</td>
+		<td><input type="text" name="currencyEvt.num" id="currencyNum" class="text ui-widget-content ui-corner-all" value="${currencyEvt.num }" readonly="readonly" /></td>
 		<td><label>单位</label></td>
 		<td><input type="text" name="currencyEvt.unit" id="currencyUnit" class="text ui-widget-content ui-corner-all" value="${currencyEvt.unit }" /></td>
 	</tr>

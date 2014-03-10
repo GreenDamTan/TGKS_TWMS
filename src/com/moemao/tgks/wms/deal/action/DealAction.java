@@ -49,6 +49,8 @@ public class DealAction extends TGKSAction
     
     private String orderDealOrderId;
     
+    private String orderDealOrderCode;
+    
     private String orderDealOrderType;
 
     public String dealManager()
@@ -72,8 +74,10 @@ public class DealAction extends TGKSAction
     {
     	// 参数最后一位表示订单交易类型
         String params = this.getRequest().getParameter("params").trim();
-        orderDealOrderId = params.substring(0, params.length() - 1);
-        orderDealOrderType = params.substring(params.length() - 1, params.length());
+        String[] strs = params.split("-");
+        orderDealOrderId = strs[0].trim();
+        orderDealOrderCode = strs[1].trim();
+        orderDealOrderType = strs[2].trim();
         return SUCCESS;
     }
 
@@ -93,6 +97,7 @@ public class DealAction extends TGKSAction
     {
         dealEvt = new DealEvt();
         dealEvt.setOrderId(this.getRequest().getParameter("orderId"));
+        dealEvt.setOrderCode(this.getRequest().getParameter("orderCode"));
         dealEvt.setType(this.getRequest().getParameter("orderType"));
         String id = this.getRequest().getParameter("id");
         if (!CommonUtil.isEmpty(id))
@@ -230,7 +235,17 @@ public class DealAction extends TGKSAction
         this.orderDealOrderId = orderDealOrderId;
     }
 
-    public String getOrderDealOrderType()
+    public String getOrderDealOrderCode()
+    {
+    	return orderDealOrderCode;
+    }
+
+	public void setOrderDealOrderCode(String orderDealOrderCode)
+    {
+    	this.orderDealOrderCode = orderDealOrderCode;
+    }
+
+	public String getOrderDealOrderType()
     {
         return this.orderDealOrderType;
     }

@@ -40,6 +40,9 @@ public class CurrencyDetailServiceImpl implements CurrencyDetailService
 		return currencyDetailEvt;
 	}
 	
+	/**
+	 * 新增资金流动记录
+	 */
 	public int addCurrencyDetail(CurrencyDetailEvt currencyDetailEvt)
 	{
 		currencyDetailEvt.setId(WmsUtil.createUniqueID());

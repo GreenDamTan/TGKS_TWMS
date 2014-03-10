@@ -8,7 +8,7 @@
                 <th width="20"><input type="checkbox" id="allOrderDealId" name="allOrderDealId"/></th>
 				<th>商品名称</th>
 				<th>商品编号</th>
-				<th>订单号</th>
+				<th>订单编号</th>
 				<th>过款状态</th>
 				<th>过库状态</th>
 				<th>交易类型</th>
@@ -25,7 +25,7 @@
 					<td width="20"><input type="checkbox" name="orderDealId" value="<s:property value='#evt.id'/>" title="<s:property value='#evt.payStatus'/>" alt="<s:property value='#evt.storeStatus'/>" /></td>
 					<td><b id="<s:property value='#evt.id'/>" class="orderDealUpdate"><s:property value="#evt.commodityName"/></b></td>
 					<td><s:property value="#evt.commodityCode"/></td>
-					<td><s:property value="#evt.orderId"/></td>
+					<td><s:property value="#evt.orderCode"/></td>
 					<td>
 						<s:if test="#evt.payStatus == 0">
 							未过款

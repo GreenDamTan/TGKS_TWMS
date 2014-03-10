@@ -46,7 +46,7 @@
 		<td><input type="text" name="commodityEvt.url" id="commodityUrl" class="text ui-widget-content ui-corner-all" value="${commodityEvt.url }" /></td>
 	</tr>
 	<tr>
-		<td><label for="price">定价</label></td>
+		<td><label for="price">进货价</label></td>
 		<td><input type="text" name="commodityEvt.price" id="commodityPrice" class="text ui-widget-content ui-corner-all" value="${commodityEvt.price }" /></td>
 		<td><label for="netPrice">网上参考报价</label></td>
 		<td><input type="text" name="commodityEvt.netPrice" id="commodityNetPrice" class="text ui-widget-content ui-corner-all" value="${commodityEvt.netPrice }" /></td>

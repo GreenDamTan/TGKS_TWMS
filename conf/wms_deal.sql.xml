@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.deal.dao.DealDao">
 <select id="wms_queryDeal" parameterType="DealReq" resultType="DealEvt" resultMap="DealEvtMap">
         <![CDATA[  
-            SELECT t.id, t.commodityid, t.commoditycode, t.commodityname, t.orderid, t.paystatus, t.storestatus, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
+            SELECT t.id, t.commodityid, t.commoditycode, t.commodityname, t.orderid, t.ordercode, t.paystatus, t.storestatus, t.type, t.number, t.price, t.createtime, t.dealtime, t.remark FROM t_tgks_wms_deal t
         ]]>
         <where>
                 1=1
@@ -22,7 +22,10 @@
                 AND t.COMMODITYNAME LIKE CONCAT(CONCAT('%', #{commodityName}),'%')
             </if>
             <if test="orderId !=null and orderId !='' ">
-                AND t.ORDERID LIKE CONCAT(CONCAT('%', #{orderId}),'%')
+                AND t.ORDERID = #{orderId}
+            </if>
+            <if test="orderCode !=null and orderCode !='' ">
+                AND t.ORDERCODE LIKE CONCAT(CONCAT('%', #{orderCode}),'%')
             </if>
             <if test="payStatus !=null and payStatus !='' ">
                 AND t.PAYSTATUS = #{payStatus}
@@ -56,8 +59,8 @@
 
 <insert id="wms_addDeal" parameterType="DealEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_deal (id, commodityid, commoditycode, commodityname, orderid, paystatus, storestatus, type, number, price, createtime, dealtime, remark) 
-            VALUES (#{id}, #{commodityId}, #{commodityCode}, #{commodityName}, #{orderId}, #{payStatus}, #{storeStatus}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_deal (id, commodityid, commoditycode, commodityname, orderid, ordercode, paystatus, storestatus, type, number, price, createtime, dealtime, remark) 
+            VALUES (#{id}, #{commodityId}, #{commodityCode}, #{commodityName}, #{orderId}, #{orderCode}, #{payStatus}, #{storeStatus}, #{type}, #{number}, #{price}, #{createTime}, #{dealTime}, #{remark}) 
         ]]>
 </insert>
 
@@ -68,6 +71,7 @@
                        commoditycode = #{commodityCode},
                        commodityname = #{commodityName},
                        orderid = #{orderId},
+                       ordercode = #{orderCode},
                        paystatus = #{payStatus},
                        storestatus = #{storeStatus},
                        type = #{type},

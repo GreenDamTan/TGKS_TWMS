@@ -13,9 +13,8 @@
 		<table>
 			<tr>
 				<td><label>名称: </label></td><td><input type="text" name="currencyReq.name" /></td>
-				<td>
-				
-				</td>
+				<td><label>币种: </label></td><td><input type="text" name="currencyReq.type" /></td>
+				<td><label>缩写: </label></td><td><input type="text" name="currencyReq.code" /></td>
 				<td>
 				<button id="clearCurrency">重置</button>
 				<button id="queryCurrency">查询</button>

@@ -13,13 +13,26 @@
 		<table>
 			<tr>
 				<td><label>名称: </label></td><td><input type="text" name="currencyDetailReq.name" /></td>
+				<td><label>币种: </label></td><td><input type="text" name="currencyDetailReq.type" /></td>
+				<td><label>缩写: </label></td><td><input type="text" name="currencyDetailReq.code" /></td>
 				<td>
-				
+					<label>流向: </label>
 				</td>
 				<td>
-				<button id="clearCurrencyDetail">重置</button>
-				<button id="queryCurrencyDetail">查询</button>
+					<select name="currencyDetailReq.direction">
+						<option value="" >全部</option>
+						<option value="0">流入</option>
+						<option value="1">流出</option>
+					</select>
 				</td>
+			</tr>
+			<tr>
+				<td><label>订单编号: </label></td><td><input type="text" name="currencyDetailReq.orderCode" /></td>
+				<td>交易时间：</td>
+				<td><input type="text" class="datepicker" name="currencyDetailReq.createTimeStart" /></td>
+				<td>~</td>
+				<td><input type="text" class="datepicker" name="currencyDetailReq.createTimeEnd" /></td>
+				<td></td><td><button id="clearCurrencyDetail">重置</button><button id="queryCurrencyDetail">查询</button></td>
 			</tr>
 		</table>
 	</form>

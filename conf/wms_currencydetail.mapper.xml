@@ -8,10 +8,11 @@
         <result property="currencyId" column="CURRENCYID" />
         <result property="name" column="NAME" />
         <result property="type" column="TYPE" />
+        <result property="direction" column="DIRECTION" />
         <result property="code" column="CODE" />
         <result property="unit" column="UNIT" />
         <result property="orderId" column="ORDERID" />
-        <result property="orderOrderId" column="ORDERORDERID" />
+        <result property="orderCode" column="ORDERCODE" />
         <result property="dealId" column="DEALID" />
         <result property="num" column="NUM" />
         <result property="createTime" column="CREATETIME" />

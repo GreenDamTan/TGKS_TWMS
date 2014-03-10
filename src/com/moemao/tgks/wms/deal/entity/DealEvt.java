@@ -30,6 +30,11 @@ public class DealEvt
     private String orderId;
 
     /**
+     * 订单编号
+     */
+    private String orderCode;
+
+    /**
      * 过款状态（0 未过款；1 已付款；2 已收款）
      */
     private String payStatus;
@@ -151,6 +156,16 @@ public class DealEvt
     public void setOrderId(String orderId)
     {
         this.orderId = orderId;
+    }
+
+	public String getOrderCode()
+    {
+    	return orderCode;
+    }
+
+	public void setOrderCode(String orderCode)
+    {
+    	this.orderCode = orderCode;
     }
 
 	public String getCommodityCode()

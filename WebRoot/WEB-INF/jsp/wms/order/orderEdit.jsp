@@ -5,7 +5,7 @@
 	<input type="hidden" name="orderEvt.status" id="orderStatus" value="${orderEvt.status }" />
 	<tr>
 		<td><label for="name">订单编号</label></td>
-		<td><input type="text" name="orderEvt.orderId" id="orderOrderId" class="text ui-widget-content ui-corner-all" value="${orderEvt.orderId }" /></td>
+		<td><input type="text" name="orderEvt.code" id="orderCode" class="text ui-widget-content ui-corner-all" value="${orderEvt.code }" /></td>
 		<td><label for="status">订单状态</label></td>
 		<td>
 			<s:if test="orderEvt.status == 0">

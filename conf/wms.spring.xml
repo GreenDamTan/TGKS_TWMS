@@ -53,6 +53,8 @@
     <property name="wms_dealDao" ref="wms_dealDao" />
     <property name="wms_orderService" ref="wms_orderService" />
     <property name="wms_commodityService" ref="wms_commodityService" />
+    <property name="wms_currencyService" ref="wms_currencyService" />
+    <property name="wms_currencyDetailService" ref="wms_currencyDetailService" />
   </bean>
   <!-- ﻿deal_action 配置 -->
   <bean id="wms_dealAction" class="com.moemao.tgks.wms.deal.action.DealAction">

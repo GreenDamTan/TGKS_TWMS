@@ -66,8 +66,7 @@ public class CurrencyAction extends TGKSAction
 	
 	public String editCurrency()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CurrencyAction.updateCurrency");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CurrencyAction.updateCurrency");
 		int result = 0;
 		if (CommonUtil.isEmpty(currencyEvt.getId()))
 		{
@@ -77,11 +76,8 @@ public class CurrencyAction extends TGKSAction
 		{
 			result = wms_currencyService.updateCurrency(currencyEvt);
 		}
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CurrencyAction.updateCurrency");
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CurrencyAction.updateCurrency");
 		return SUCCESS;
 	}
 	

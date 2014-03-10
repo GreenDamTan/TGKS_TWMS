@@ -18,4 +18,6 @@ public interface OrderDao extends TGKSDao
     public int wms_updateOrder(OrderEvt orderEvt) throws DataAccessException;
 
     public int wms_deleteOrder(List<String> list) throws DataAccessException;
+    
+    public int wms_completeOrder(List<String> list) throws DataAccessException;
 }

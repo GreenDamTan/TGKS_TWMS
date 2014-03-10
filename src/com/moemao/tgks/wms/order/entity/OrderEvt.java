@@ -10,9 +10,9 @@ public class OrderEvt
     private String id;
 
     /**
-     * 自定义订单ID
+     * 订单编号
      */
-    private String orderId;
+    private String code;
 
     /**
      * 订单类型（0 购入；1 售出）
@@ -65,23 +65,18 @@ public class OrderEvt
         this.id = id;
     }
 
-    /**
-     * @return 返回 orderId
-     */
-    public String getOrderId()
+
+    public String getCode()
     {
-        return orderId;
+    	return code;
     }
 
-    /**
-     * @param 对orderId进行赋值
-     */
-    public void setOrderId(String orderId)
+	public void setCode(String code)
     {
-        this.orderId = orderId;
+    	this.code = code;
     }
 
-    /**
+	/**
      * @return 返回 type
      */
     public String getType()

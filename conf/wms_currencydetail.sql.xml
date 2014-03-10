@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.currencydetail.dao.CurrencyDetailDao">
 <select id="wms_queryCurrencyDetail" parameterType="CurrencyDetailReq" resultType="CurrencyDetailEvt" resultMap="CurrencyDetailEvtMap">
         <![CDATA[  
-            SELECT t.id, t.currencyid, t.name, t.type, t.code, t.unit, t.orderid, t.orderorderid, t.dealid, t.num, t.createtime, t.remark FROM t_tgks_wms_currencydetail t
+            SELECT t.id, t.currencyid, t.name, t.type, t.direction, t.code, t.unit, t.orderid, t.ordercode, t.dealid, t.num, t.createtime, t.remark FROM t_tgks_wms_currencydetail t
         ]]>
         <where>
                 1=1
@@ -16,13 +16,16 @@
                 AND t.CURRENCYID = #{currencyId}
             </if>
             <if test="name !=null and name !='' ">
-                AND t.NAME = #{name}
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
             </if>
             <if test="type !=null and type !='' ">
-                AND t.TYPE = #{type}
+                AND t.TYPE LIKE CONCAT(CONCAT('%', #{type}),'%')
+            </if>
+            <if test="direction !=null and direction !='' ">
+                AND t.DIRECTION = #{direction}
             </if>
             <if test="code !=null and code !='' ">
-                AND t.CODE = #{code}
+                AND t.CODE LIKE CONCAT(CONCAT('%', #{code}),'%')
             </if>
             <if test="unit !=null and unit !='' ">
                 AND t.UNIT = #{unit}
@@ -30,8 +33,8 @@
             <if test="orderId !=null and orderId !='' ">
                 AND t.ORDERID = #{orderId}
             </if>
-            <if test="orderOrderId !=null and orderOrderId !='' ">
-                AND t.ORDERORDERID = #{orderOrderId}
+            <if test="orderCode !=null and orderCode !='' ">
+                AND t.ORDERCODE = #{orderCode}
             </if>
             <if test="dealId !=null and dealId !='' ">
                 AND t.DEALID = #{dealId}
@@ -56,8 +59,8 @@
 
 <insert id="wms_addCurrencyDetail" parameterType="CurrencyDetailEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_currencydetail (id, currencyid, name, type, code, unit, orderid, orderorderid, dealid, num, createtime, remark) 
-            VALUES (#{id}, #{currencyId}, #{name}, #{type}, #{code}, #{unit}, #{orderId}, #{orderOrderId}, #{dealId}, #{num}, #{createTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_currencydetail (id, currencyid, name, type, direction, code, unit, orderid, ordercode, dealid, num, createtime, remark) 
+            VALUES (#{id}, #{currencyId}, #{name}, #{type}, #{direction}, #{code}, #{unit}, #{orderId}, #{orderCode}, #{dealId}, #{num}, #{createTime}, #{remark}) 
         ]]>
 </insert>
 
@@ -67,10 +70,11 @@
                        currencyid = #{currencyId},
                        name = #{name},
                        type = #{type},
+                       direction = #{direction},
                        code = #{code},
                        unit = #{unit},
                        orderid = #{orderId},
-                       orderorderid = #{orderOrderId},
+                       ordercode = #{orderCode},
                        dealid = #{dealId},
                        num = #{num},
                        remark = #{remark}

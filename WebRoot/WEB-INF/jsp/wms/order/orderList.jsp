@@ -20,8 +20,8 @@
 			<s:iterator  value="list" var="evt">
 				<tr>
 					<td width="20"><input type="checkbox" name="orderId" value="<s:property value='#evt.id'/>"/></td>
-					<td><b id="<s:property value='#evt.id'/>" class="orderUpdate"><s:property value="#evt.orderId"/></b></td>
-					<td><b title="<s:property value='#evt.orderId'/><s:property value='#evt.type'/>" class="orderDeal">点击进入</b></td>
+					<td><b id="<s:property value='#evt.id'/>" class="orderUpdate"><s:property value="#evt.code"/></b></td>
+					<td><b title="<s:property value='#evt.id'/>-<s:property value='#evt.code'/>-<s:property value='#evt.type'/>" class="orderDeal">点击进入</b></td>
 					<td>
 						<s:if test="#evt.type == 0">
 							购入

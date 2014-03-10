@@ -6,15 +6,15 @@
         <thead>
             <tr class="ui-widget-header ">
                 <th width="20"><input type="checkbox" id="allCurrencyDetailId" name="allCurrencyDetailId"  /></th>
+                <th>交易ID</th>
 				<th>名称</th>
 				<th>币种</th>
 				<th>缩写</th>
+				<th>流向</th>
 				<th>数量</th>
 				<th>单位</th>
-				<th>订单ID</th>
 				<th>订单编号</th>
-				<th>交易ID</th>
-				<th>创建时间</th>
+				<th>交易时间</th>
 				<th>备注</th>
             </tr>
         </thead>
@@ -22,14 +22,21 @@
 			<s:iterator  value="list" var="evt">
 				<tr>
 					<td width="20"><input type="checkbox" name="currencyDetailId" value="<s:property value='#evt.id'/>" /></td>
-					<td><b id="<s:property value='#evt.id'/>" class="currencyDetailUpdate"><s:property value="#evt.name"/></b></td>
+					<td><b id="<s:property value='#evt.id'/>" class="currencyDetailUpdate"><s:property value="#evt.dealId"/></b></td>
+					<td><s:property value="#evt.name"/></td>
 					<td><s:property value="#evt.type"/></td>
 					<td><s:property value="#evt.code"/></td>
+					<td>
+						<s:if test="#evt.direction == 0">
+							流入
+						</s:if>
+						<s:elseif test="#evt.direction == 1">
+							流出
+						</s:elseif>
+					</td>
 					<td><s:property value="#evt.num"/></td>
 					<td><s:property value="#evt.unit"/></td>
-					<td><s:property value="#evt.orderId"/></td>
-					<td><s:property value="#evt.orderOrderId"/></td>
-					<td><s:property value="#evt.dealId"/></td>
+					<td><s:property value="#evt.orderCode"/></td>
 					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 					<td><s:property value="#evt.remark"/></td>
 				</tr>

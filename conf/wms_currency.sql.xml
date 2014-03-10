@@ -13,13 +13,13 @@
                 AND t.ID = #{id}
             </if>
             <if test="name !=null and name !='' ">
-                AND t.NAME = #{name}
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
             </if>
             <if test="type !=null and type !='' ">
-                AND t.TYPE = #{type}
+                AND t.TYPE LIKE CONCAT(CONCAT('%', #{type}),'%')
             </if>
             <if test="code !=null and code !='' ">
-                AND t.CODE = #{code}
+                AND t.CODE LIKE CONCAT(CONCAT('%', #{code}),'%')
             </if>
             <if test="unit !=null and unit !='' ">
                 AND t.UNIT = #{unit}

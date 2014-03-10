@@ -85,15 +85,29 @@ public class OrderAction extends TGKSAction
 
     public String deleteOrder()
     {
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-                "OrderAction.deleteOrder");
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "OrderAction.deleteOrder");
         String ids = this.getRequest().getParameter("ids");
         int result = wms_orderService.deleteOrder(CommonUtil.stringToList(ids));
-        CommonUtil.infoLog(logger,
-                CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-                StringUtil.toBeString(result));
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-                "OrderAction.deleteOrder");
+        CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "OrderAction.deleteOrder");
+        return SUCCESS;
+    }
+    
+    /**
+     * 
+     * @Title: completeOrder
+     * @Description: 交易中→已完成
+     * @return
+     * @return String 返回类型
+     * @throws
+     */
+    public String completeOrder()
+    {
+    	CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "OrderAction.completeOrder");
+        String ids = this.getRequest().getParameter("ids");
+        int result = wms_orderService.completeOrder(CommonUtil.stringToList(ids));
+        CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "OrderAction.completeOrder");
         return SUCCESS;
     }
 

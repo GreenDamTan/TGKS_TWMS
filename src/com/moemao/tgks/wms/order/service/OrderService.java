@@ -16,5 +16,6 @@ public interface OrderService
     public int updateOrder(OrderEvt orderEvt);
 
     public int deleteOrder(List<String> ids);
-
+    
+    public int completeOrder(List<String> ids);
 }

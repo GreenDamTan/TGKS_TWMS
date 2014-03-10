@@ -11,7 +11,7 @@
 	<form id="orderReq" action="../wms/queryOrder.action" method="post">
 		<table>
 			<tr>
-				<td><label>订单号: </label></td><td><input type="text" name="orderReq.orderId" /></td>
+				<td><label>订单编号: </label></td><td><input type="text" name="orderReq.code" /></td>
 				<td><label>发票编号: </label></td><td><input type="text" name="orderReq.invoice" /></td>
 				<td><label>订单类型: </label></td>
 				<td>
@@ -62,8 +62,7 @@
 
 <button id="addOrder">新增</button>
 <button id="deleteOrder">删除</button>
-<button id="onOrder">启用</button>
-<button id="offOrder">禁用</button>
+<button id="completeOrder">完成订单</button>
 
 <div id="orderDiv"></div>
 
@@ -217,12 +216,8 @@ $(document).ready(function(){
 		return false;
 	});
 	 
-	 // 启用按钮
-	$( "#onOrder" ).button({
-		icons: {
-			primary: "ui-icon-check"
-			}
-		}).click(function() {
+	 // 完成按钮
+	$( "#completeOrder" ).button().click(function() {
 			$("#orderManagerSubmit").val("1");
 			// 获取选中的记录ids
 			var ids = "";
@@ -252,7 +247,7 @@ $(document).ready(function(){
 			
 			// ajax调用删除action
 			var options = { 
-				url:"../wms/changeStatusOrder.action?status=1&ids=" + ids , // 提交给哪个执行
+				url:"../wms/completeOrder.action?ids=" + ids , // 提交给哪个执行
 				type:'POST', 
 				success: function(){
 					// 执行成功刷新form

@@ -5,15 +5,15 @@
 <mapper namespace="com.moemao.tgks.wms.order.dao.OrderDao">
 <select id="wms_queryOrder" parameterType="OrderReq" resultType="OrderEvt" resultMap="OrderEvtMap">
         <![CDATA[  
-            SELECT t.id, t.orderid, t.type, t.status, t.accounttype, t.invoiceType, t.invoice, t.createtime, t.remark FROM t_tgks_wms_order t
+            SELECT t.id, t.code, t.type, t.status, t.accounttype, t.invoiceType, t.invoice, t.createtime, t.remark FROM t_tgks_wms_order t
         ]]>
         <where>
                 1=1
             <if test="id !=null and id !='' ">
                 AND t.ID = #{id}
             </if>
-            <if test="orderId !=null and orderId !='' ">
-                AND t.ORDERID LIKE CONCAT(CONCAT('%', #{orderId}),'%')
+            <if test="code !=null and code !='' ">
+                AND t.CODE LIKE CONCAT(CONCAT('%', #{code}),'%')
             </if>
             <if test="type !=null and type !='' ">
                 AND t.TYPE = #{type}
@@ -44,15 +44,15 @@
 
 <insert id="wms_addOrder" parameterType="OrderEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_wms_order (id, orderid, type, status, accounttype, invoiceType, invoice, createtime, remark) 
-            VALUES (#{id}, #{orderId}, #{type}, #{status}, #{accountType}, #{invoiceType}, #{invoice}, #{createTime}, #{remark}) 
+            INSERT INTO t_tgks_wms_order (id, code, type, status, accounttype, invoiceType, invoice, createtime, remark) 
+            VALUES (#{id}, #{code}, #{type}, #{status}, #{accountType}, #{invoiceType}, #{invoice}, #{createTime}, #{remark}) 
         ]]>
 </insert>
 
 <update id="wms_updateOrder" parameterType="OrderEvt">
         <![CDATA[  
             UPDATE t_tgks_wms_order SET 
-                       orderid = #{orderId},
+                       code = #{code},
                        type = #{type},
                        status = #{status},
                        accounttype = #{accountType},
@@ -71,4 +71,14 @@
             #{ids}
         </foreach>
 </delete>
+
+<update id="wms_completeOrder" parameterType="list">
+        <![CDATA[  
+            UPDATE t_tgks_wms_order SET status = '2' WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</update>
+
 </mapper>

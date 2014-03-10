@@ -44,4 +44,16 @@ public interface DealService
      * @throws
      */
     public int updateCommodityNum(String commodityId, int num);
+    
+    /**
+     * 更新商品的库存进货价
+     * @函数功能说明：
+     * @创建者：Ken
+     * @创建日期：2014-3-10 上午11:23:11
+     * @参数：@param commodityId, price
+     * @参数：@return
+     * @return int
+     * @throws
+     */
+    public int updateCommodityPrice(String commodityId, double price);
 }

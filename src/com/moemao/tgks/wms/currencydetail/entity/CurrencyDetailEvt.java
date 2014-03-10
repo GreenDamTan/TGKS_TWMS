@@ -25,6 +25,11 @@ public class CurrencyDetailEvt
 	private String type;
 	
 	/**
+	 * 流向
+	 */
+	private String direction;
+	
+	/**
 	 * 缩写
 	 */
 	private String code;
@@ -42,7 +47,7 @@ public class CurrencyDetailEvt
 	/**
 	 * 订单编号
 	 */
-	private String orderOrderId;
+	private String orderCode;
 	
 	/**
 	 * 交易ID
@@ -128,6 +133,16 @@ public class CurrencyDetailEvt
 		this.type = type;
 	}
 	
+	public String getDirection()
+    {
+    	return direction;
+    }
+
+	public void setDirection(String direction)
+    {
+    	this.direction = direction;
+    }
+
 	/**
 	 * @return 返回 code
 	 */
@@ -176,22 +191,16 @@ public class CurrencyDetailEvt
 		this.orderId = orderId;
 	}
 	
-	/**
-	 * @return 返回 orderOrderId
-	 */
-	public String getOrderOrderId()
-	{
-		return orderOrderId;
-	}
-	
-	/**
-	 * @param 对orderOrderId进行赋值
-	 */
-	public void setOrderOrderId(String orderOrderId)
-	{
-		this.orderOrderId = orderOrderId;
-	}
-	
+	public String getOrderCode()
+    {
+    	return orderCode;
+    }
+
+	public void setOrderCode(String orderCode)
+    {
+    	this.orderCode = orderCode;
+    }
+
 	/**
 	 * @return 返回 dealId
 	 */

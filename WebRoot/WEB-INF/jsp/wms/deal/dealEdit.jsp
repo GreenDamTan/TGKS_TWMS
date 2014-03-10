@@ -2,8 +2,9 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <table>
 	<input type="hidden" name="dealEvt.id" id="dealId" value="${dealEvt.id }" />
-	<input type="hidden" name="dealEvt.payStatus" id="orderId" value="${dealEvt.payStatus }" />
-	<input type="hidden" name="dealEvt.storeStatus" id="orderId" value="${dealEvt.storeStatus }" />
+	<input type="hidden" name="dealEvt.payStatus" id="payStatus" value="${dealEvt.payStatus }" />
+	<input type="hidden" name="dealEvt.storeStatus" id="storeStatus" value="${dealEvt.storeStatus }" />
+	<input type="hidden" name="dealEvt.orderId" id="orderId" value="${dealEvt.orderId }" />
 	<tr>
 		<td><label for="commodityName">商品名称</label></td>
 		<td><input type="text" name="dealEvt.commodityName" id="dealCommodityName" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityName }"/></td>
@@ -13,8 +14,8 @@
 	<tr>
 		<td><label for="commodityCode">商品编号</label></td>
 		<td><input type="text" name="dealEvt.commodityCode" id="dealCommodityCode" class="text ui-widget-content ui-corner-all" value="${dealEvt.commodityCode }"/></td>
-		<td><label for="orderId">订单号</label></td>
-		<td><input type="text" name="dealEvt.orderId" id="dealOrderId" class="text ui-widget-content ui-corner-all" value="${dealEvt.orderId }" readonly="readonly" /></td>
+		<td><label for="orderCode">订单编号</label></td>
+		<td><input type="text" name="dealEvt.orderCode" id="dealOrderCode" class="text ui-widget-content ui-corner-all" value="${dealEvt.orderCode }" readonly="readonly" /></td>
 	</tr>
 	<tr>
 		<td><label for="status">过款状态</label></td>

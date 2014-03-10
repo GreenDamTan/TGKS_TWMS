@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.wms.order.dao.OrderDao">
     <resultMap id="OrderEvtMap" type="OrderEvt">
         <id property="id" column="ID" />
-        <result property="orderId" column="ORDERID" />
+        <result property="orderCode" column="ORDERCODE" />
         <result property="type" column="TYPE" />
         <result property="status" column="STATUS" />
         <result property="accountType" column="ACCOUNTTYPE" />
