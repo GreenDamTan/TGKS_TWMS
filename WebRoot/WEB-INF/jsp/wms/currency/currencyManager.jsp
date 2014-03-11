@@ -26,8 +26,6 @@
 
 <button id="addCurrency">新增</button>
 <button id="deleteCurrency">删除</button>
-<button id="onCurrency">启用</button>
-<button id="offCurrency">禁用</button>
 
 <div id="currencyDiv"></div>
 

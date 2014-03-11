@@ -1,12 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/jsp/common/TGKSHeaderList.inc.jsp" %>
+<script  type="text/javascript" src="<%=basePath%>js/common/upload/jquery.upload.js"></script>
 <table>
 	<input type="hidden" name="commodityEvt.id" id="commodityId" value="${commodityEvt.id }" />
 	<tr>
 		<td><label for="name">商品名称</label></td>
 		<td><input type="text" name="commodityEvt.name" id="commodityName" class="text ui-widget-content ui-corner-all" value="${commodityEvt.name }" /></td>
 		<td><label for="images">预览图片</label></td>
-		<td><input type="text" name="commodityEvt.images" id="commodityImages" class="text ui-widget-content ui-corner-all" value="${commodityEvt.images }" /></td>
+		<td>
+			<input type="text" name="commodityEvt.images" id="commodityImages" class="text ui-widget-content ui-corner-all" value="${commodityEvt.images }" />
+			<form id="commodityImagesForm" name="commodityImagesForm" action="../common/uploadSingle.action" method="post"  enctype="multipart/form-data">
+				<table>
+					<tr>
+						<td>
+							<input type="file" name="single"  size="30"/>
+						</td>
+						<td>
+							<button id="uploadCommodityImages">上传</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
 	</tr>
 	<tr>
 		<td><label for="name">商品编号</label></td>
@@ -57,4 +72,26 @@
 	</tr>
 </table>
 <script type="text/javascript">
+$(document).ready(function(){
+	// 上传按钮
+	$( "#uploadCommodityImages" ).button().click(function() {
+			
+			// ajax调用删除action
+			var options = { 
+				url:"${pageContext.request.contextPath}/common/uploadSingle.action", // 提交给哪个执行
+				type:'POST', 
+				success: function(singleUrl){
+					// 执行成功刷新form
+					//alert(singleUrl);
+					$("#commodityImages").val(".." + singleUrl);
+				},
+				error:function(){ 
+					alert("操作失败"); 
+				}
+			};
+			
+			$("#commodityImagesForm").ajaxSubmit(options);
+			return false;
+	});
+});
 </script>

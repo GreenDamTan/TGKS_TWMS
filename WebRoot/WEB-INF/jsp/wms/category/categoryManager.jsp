@@ -23,9 +23,8 @@
 						</s:iterator>
 					</select>
 				</td>
-				<td>
-				
-				</td>
+				</td><td></td><td>
+				</td><td></td><td>
 				<td>
 				<button id="clearCategory">重置</button>
 				<button id="queryCategory">查询</button>

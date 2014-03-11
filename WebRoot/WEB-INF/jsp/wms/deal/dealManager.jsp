@@ -14,15 +14,7 @@
 				<td><label>订单编号: </label></td><td><input type="text" name="dealReq.orderCode" /></td>
 				<td><label>商品编号: </label></td><td><input type="text" name="dealReq.commodityCode" /></td>
 				<td><label>商品名称: </label></td><td><input type="text" name="dealReq.commodityName" /></td>
-				<td><label>交易状态: </label>
-				<td>
-					<select name="dealReq.payStatus">
-						<option value="" >全部</option>
-						<option value="0" >未过款</option>
-						<option value="1" >已付款</option>
-						<option value="1" >已收款</option>
-					</select>
-				</td>
+				<td><label>交易ID: </label></td><td><input type="text" name="dealReq.id" /></td>
 			</tr>
 			<tr>
 				<td><label>交易类型: </label>
@@ -33,7 +25,15 @@
 						<option value="1" >售出</option>
 					</select>
 				</td>
-				<td></td><td></td>
+				<td><label>交易状态: </label>
+				<td>
+					<select name="dealReq.payStatus">
+						<option value="" >全部</option>
+						<option value="0" >未过款</option>
+						<option value="1" >已付款</option>
+						<option value="1" >已收款</option>
+					</select>
+				</td>
 				<td></td><td></td>
 				<td></td>
 				<td>

@@ -67,7 +67,7 @@ $(document).ready(function(){
 	// 新增/更新窗口
 	$( "#commodityEdit" ).dialog({
 		height:500,
-		width:750,
+		width:850,
 		autoOpen: false,
 		show: "fold",
 		hide: "fold",
