@@ -2,8 +2,6 @@ package com.moemao.tgks.wms.commodity.action;
 
 import java.util.List;
 
-import net.sf.json.JSONArray;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
