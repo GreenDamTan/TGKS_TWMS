@@ -59,7 +59,7 @@
 					<td><s:property value="#evt.number"/></td>
 					<td><s:property value="#evt.price"/></td>
 					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><s:date name="#evt.orderDealTime" format="yyyy-MM-dd HH:mm:ss"/></td>
+					<td><s:date name="#evt.dealTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 					<td><s:property value="#evt.remark"/></td>
 				</tr>
 			</s:iterator>

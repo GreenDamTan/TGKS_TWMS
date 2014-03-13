@@ -67,6 +67,12 @@
 		<td><input type="text" name="commodityEvt.netPrice" id="commodityNetPrice" class="text ui-widget-content ui-corner-all" value="${commodityEvt.netPrice }" /></td>
 	</tr>
 	<tr>
+		<td><label for="number">库存数量</label></td>
+		<td><input type="text" name="commodityEvt.number" id="commodityNumber" class="text ui-widget-content ui-corner-all" value="${commodityEvt.number}" readonly="readonly" /></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
 		<td><label for="remark">备注</label></td>
 		<td colspan="3"><textarea name="commodityEvt.remark" id="commodityRemark" class="text ui-widget-content ui-corner-all" cols="93" rows="5">${commodityEvt.remark }</textarea></td>
 	</tr>

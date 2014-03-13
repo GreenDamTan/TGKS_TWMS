@@ -1,5 +1,6 @@
 package com.moemao.tgks.wms.deal.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.moemao.tgks.common.tool.CommonUtil;
@@ -265,6 +266,7 @@ public class DealServiceImpl implements DealService
     	if (StringUtil.isNotEmpty(payStatus))
     	{
     		dealEvt.setPayStatus(payStatus);
+    		dealEvt.setDealTime(new Date());
     	}
     	
     	if (StringUtil.isNotEmpty(storeStatus))

@@ -17,6 +17,7 @@
 				<th>库存数目</th>
 				<th>定价</th>
 				<th>网上参考报价</th>
+				<th>操作(暂无)</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
 					<td><s:property value="#evt.number"/></td>
 					<td><s:property value="#evt.price"/></td>
 					<td><s:property value="#evt.netPrice"/></td>
+					<td></td>
 				</tr>
 			</s:iterator>
 		</tbody>
