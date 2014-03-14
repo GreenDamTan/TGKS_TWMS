@@ -107,7 +107,7 @@ public class DealServiceImpl implements DealService
     		// 购入单子 将状态改成已付款
     		for (String id : ids)
     		{
-    			this.updateOrderDealStatus(id, WmsConstant.PAY_STATUS_1, null);
+    			result = this.updateOrderDealStatus(id, WmsConstant.PAY_STATUS_1, null);
     			
     			// 添加资金流出记录
     			this.addCurrencyDetail(id);
@@ -118,7 +118,7 @@ public class DealServiceImpl implements DealService
     		// 售出单子 将状态改成已收款
     		for (String id : ids)
     		{
-    			this.updateOrderDealStatus(id, WmsConstant.PAY_STATUS_2, null);
+    			result = this.updateOrderDealStatus(id, WmsConstant.PAY_STATUS_2, null);
     			
     			// 添加资金流出记录
     			this.addCurrencyDetail(id);
@@ -228,7 +228,7 @@ public class DealServiceImpl implements DealService
     			this.updateOrderDealStatus(id, null, WmsConstant.STORE_STATUS_1);
     			
     			// 进货入库更新当前进货价格
-    			this.updateCommodityPrice(dealEvt.getCommodityId(), dealEvt.getPrice());
+    			result = this.updateCommodityPrice(dealEvt.getCommodityId(), dealEvt.getPrice());
     		}
     	}
     	else if (WmsConstant.DEAL_TYPE_1.equals(orderType))
@@ -242,7 +242,7 @@ public class DealServiceImpl implements DealService
     			this.updateCommodityNum(dealEvt.getCommodityId(), (0 - dealEvt.getNumber()));
     	        
     	        // 更新Deal状态 已出库
-    			this.updateOrderDealStatus(id, null, WmsConstant.STORE_STATUS_2);
+    			result = this.updateOrderDealStatus(id, null, WmsConstant.STORE_STATUS_2);
     		}
     	}
     	

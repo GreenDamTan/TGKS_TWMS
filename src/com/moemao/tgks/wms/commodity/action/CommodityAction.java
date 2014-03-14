@@ -109,11 +109,13 @@ public class CommodityAction extends TGKSAction
         {
             // id为空，则为新增操作
             result = wms_commodityService.addCommodity(commodityEvt);
+            CommonUtil.systemLog("wms/editCommodity.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增商品\n%S", commodityEvt.toString()));
         }
         else
         {
             // id存在，则为更新操作
             result = wms_commodityService.updateCommodity(commodityEvt);
+            CommonUtil.systemLog("wms/editCommodity.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改商品\n%S", commodityEvt.toString()));
         }
         
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
@@ -123,16 +125,12 @@ public class CommodityAction extends TGKSAction
 
     public String deleteCommodity()
     {
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-                "CommodityAction.deleteCommodity");
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CommodityAction.deleteCommodity");
         String ids = this.getRequest().getParameter("ids");
-        int result = wms_commodityService.deleteCommodity(CommonUtil
-                .stringToList(ids));
-        CommonUtil.infoLog(logger,
-                CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-                StringUtil.toBeString(result));
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-                "CommodityAction.deleteCommodity");
+        int result = wms_commodityService.deleteCommodity(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/deleteCommodity.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除商品\nID:%S", ids));
+        CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CommodityAction.deleteCommodity");
         return SUCCESS;
     }
     

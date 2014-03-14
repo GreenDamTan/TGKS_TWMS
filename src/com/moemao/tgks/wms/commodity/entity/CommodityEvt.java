@@ -60,7 +60,7 @@ public class CommodityEvt
     private String url;
 
     /**
-     * 定价
+     * 进货价
      */
     private double price;
 
@@ -83,6 +83,12 @@ public class CommodityEvt
      * 分类名称
      */
     private String categoryName;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\ncode:%S\nname:%S\nnumber:%S\ncategoryId:%S\nimages:%S\nbrand:%S\ntype:%S\ndetails:%S\nsupplierId:%S\nurl:%S\nprice:%S\nnetPrice:%S\ncreateTime:%S\nremark:%S\n", id, code, name, number, categoryId, images, brand, type, details, supplierId, url, price, netPrice, createTime, remark);
+    }
 
     /**
      * @return 返回 id

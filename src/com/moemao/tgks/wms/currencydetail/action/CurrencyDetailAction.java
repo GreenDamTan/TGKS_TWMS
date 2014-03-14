@@ -59,47 +59,35 @@ public class CurrencyDetailAction extends TGKSAction
 		String id = this.getRequest().getParameter("id");
 		if (!CommonUtil.isEmpty(id))
 		{
-			currencyDetailEvt = wms_currencyDetailService
-			        .queryCurrencyDetailById(id);
+			currencyDetailEvt = wms_currencyDetailService.queryCurrencyDetailById(id);
 		}
 		return SUCCESS;
 	}
 	
 	public String editCurrencyDetail()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CurrencyDetailAction.updateCurrencyDetail");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CurrencyDetailAction.updateCurrencyDetail");
 		int result = 0;
 		if (CommonUtil.isEmpty(currencyDetailEvt.getId()))
 		{
-			result = wms_currencyDetailService
-			        .addCurrencyDetail(currencyDetailEvt);
+			result = wms_currencyDetailService.addCurrencyDetail(currencyDetailEvt);
 		}
 		else
 		{
-			result = wms_currencyDetailService
-			        .updateCurrencyDetail(currencyDetailEvt);
+			result = wms_currencyDetailService.updateCurrencyDetail(currencyDetailEvt);
 		}
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CurrencyDetailAction.updateCurrencyDetail");
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CurrencyDetailAction.updateCurrencyDetail");
 		return SUCCESS;
 	}
 	
 	public String deleteCurrencyDetail()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CurrencyDetailAction.deleteCurrencyDetail");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CurrencyDetailAction.deleteCurrencyDetail");
 		String ids = this.getRequest().getParameter("ids");
-		int result = wms_currencyDetailService.deleteCurrencyDetail(CommonUtil
-		        .stringToList(ids));
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CurrencyDetailAction.deleteCurrencyDetail");
+		int result = wms_currencyDetailService.deleteCurrencyDetail(CommonUtil.stringToList(ids));
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CurrencyDetailAction.deleteCurrencyDetail");
 		return SUCCESS;
 	}
 	

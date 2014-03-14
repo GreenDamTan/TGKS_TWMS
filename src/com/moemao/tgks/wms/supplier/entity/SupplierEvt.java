@@ -108,6 +108,12 @@ public class SupplierEvt
      * 备注
      */
     private String remark;
+	
+	@Override
+	public String toString()
+	{
+		return String.format("id:%S\nname:%S\naddress:%S\naccount:%S\nbank:%S\ntaxNumber:%S\ndetails:%S\ncategory:%S\nurl:%S\nperson:%S\nsex:%S\nage:%S\nemail:%S\nmobile:%S\ntel:%S\nfax:%S\nqq:%S\nalww:%S\nmsn:%S\ncreateTime:%S\nremark:%S\n", id, name, address, account, bank, taxNumber, details, category, url, person, sex, age, email, mobile, tel, fax, qq, alww, msn, createTime, remark);
+	}
 
     /**
      * @return 返回 id

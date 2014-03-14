@@ -44,26 +44,6 @@ public class DealEvt
      */
     private String storeStatus;
 
-    public String getPayStatus()
-    {
-    	return payStatus;
-    }
-
-	public void setPayStatus(String payStatus)
-    {
-    	this.payStatus = payStatus;
-    }
-
-	public String getStoreStatus()
-    {
-    	return storeStatus;
-    }
-
-	public void setStoreStatus(String storeStatus)
-    {
-    	this.storeStatus = storeStatus;
-    }
-
 	/**
      * 交易类型（0 购入；1 售出）
      */
@@ -93,6 +73,12 @@ public class DealEvt
      * 备注
      */
     private String remark;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\ncommodityId:%S\ncommodityCode:%S\ncommodityName:%S\norderId:%S\norderCode:%S\npayStatus:%S\nstoreStatus:%S\ntype:%S\nnumber:%S\nprice:%S\ncreateTime:%S\ndealTime:%S\nremark:%S\n", id, commodityId, commodityCode, commodityName, orderId, orderCode, payStatus, storeStatus, type, number, price, createTime, dealTime, remark);
+    }
 
     /**
      * @return 返回 id
@@ -208,6 +194,26 @@ public class DealEvt
     public void setNumber(int number)
     {
         this.number = number;
+    }
+
+    public String getPayStatus()
+    {
+    	return payStatus;
+    }
+
+	public void setPayStatus(String payStatus)
+    {
+    	this.payStatus = payStatus;
+    }
+
+	public String getStoreStatus()
+    {
+    	return storeStatus;
+    }
+
+	public void setStoreStatus(String storeStatus)
+    {
+    	this.storeStatus = storeStatus;
     }
 
     /**

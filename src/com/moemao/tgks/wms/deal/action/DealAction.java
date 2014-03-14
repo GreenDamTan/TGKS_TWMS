@@ -115,10 +115,12 @@ public class DealAction extends TGKSAction
         if (CommonUtil.isEmpty(dealEvt.getId()))
         {
             result = wms_dealService.addDeal(dealEvt);
+            CommonUtil.systemLog("wms/editDeal.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增交易\n%S", dealEvt.toString()));
         }
         else
         {
             result = wms_dealService.updateDeal(dealEvt);
+            CommonUtil.systemLog("wms/editDeal.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改交易信息\n%S", dealEvt.toString()));
         }
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.updateDeal");
@@ -130,6 +132,7 @@ public class DealAction extends TGKSAction
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "DealAction.deleteDeal");
         String ids = this.getRequest().getParameter("ids");
         int result = wms_dealService.deleteDeal(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/deleteDeal.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除交易\nID:%S", ids));
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.deleteDeal");
         return SUCCESS;
@@ -142,7 +145,7 @@ public class DealAction extends TGKSAction
     	String orderType = this.getRequest().getParameter("orderDealOrderType");
     	String ids = this.getRequest().getParameter("ids");
         int result = wms_dealService.payOrderDeal(orderType, CommonUtil.stringToList(ids));
-        
+        CommonUtil.systemLog("wms/payOrderDeal.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("交易过款\nID:%S", ids));
     	CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.payOrderDeal");
     	return SUCCESS;
@@ -155,7 +158,7 @@ public class DealAction extends TGKSAction
     	String orderType = this.getRequest().getParameter("orderDealOrderType");
     	String ids = this.getRequest().getParameter("ids");
         int result = wms_dealService.storeOrderDeal(orderType, CommonUtil.stringToList(ids));
-        
+        CommonUtil.systemLog("wms/storeOrderDeal.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("交易过库\nID:%S", ids));
     	CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "DealAction.storeOrderDeal");
     	return SUCCESS;

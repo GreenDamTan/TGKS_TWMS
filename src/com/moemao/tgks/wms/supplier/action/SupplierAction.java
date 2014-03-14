@@ -72,10 +72,12 @@ public class SupplierAction extends TGKSAction
         if (CommonUtil.isEmpty(supplierEvt.getId()))
         {
             result = wms_supplierService.addSupplier(supplierEvt);
+            CommonUtil.systemLog("wms/editSupplier.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增供货商\n%S", supplierEvt.toString()));
         }
         else
         {
             result = wms_supplierService.updateSupplier(supplierEvt);
+            CommonUtil.systemLog("wms/editSupplier.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改供货商信息\n%S", supplierEvt.toString()));
         }
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "SupplierAction.updateSupplier");
@@ -84,16 +86,12 @@ public class SupplierAction extends TGKSAction
 
     public String deleteSupplier()
     {
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-                "SupplierAction.deleteSupplier");
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "SupplierAction.deleteSupplier");
         String ids = this.getRequest().getParameter("ids");
-        int result = wms_supplierService.deleteSupplier(CommonUtil
-                .stringToList(ids));
-        CommonUtil.infoLog(logger,
-                CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-                StringUtil.toBeString(result));
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-                "SupplierAction.deleteSupplier");
+        int result = wms_supplierService.deleteSupplier(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/deleteSupplier.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除供货商\nID:%S", ids));
+        CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "SupplierAction.deleteSupplier");
         return SUCCESS;
     }
 

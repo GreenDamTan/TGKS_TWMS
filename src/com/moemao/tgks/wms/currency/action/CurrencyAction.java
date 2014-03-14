@@ -17,7 +17,7 @@ public class CurrencyAction extends TGKSAction
 {
 	
 	/**
-	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
+	 * @Fields serialVersionUID
 	 */
 	private static final long serialVersionUID = 5573795241877862877L;
 	
@@ -71,10 +71,12 @@ public class CurrencyAction extends TGKSAction
 		if (CommonUtil.isEmpty(currencyEvt.getId()))
 		{
 			result = wms_currencyService.addCurrency(currencyEvt);
+			CommonUtil.systemLog("wms/editCurrency.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增资金\n%S", currencyEvt.toString()));
 		}
 		else
 		{
 			result = wms_currencyService.updateCurrency(currencyEvt);
+			CommonUtil.systemLog("wms/editCurrency.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改资金\n%S", currencyEvt.toString()));
 		}
 		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CurrencyAction.updateCurrency");
@@ -83,16 +85,12 @@ public class CurrencyAction extends TGKSAction
 	
 	public String deleteCurrency()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CurrencyAction.deleteCurrency");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CurrencyAction.deleteCurrency");
 		String ids = this.getRequest().getParameter("ids");
-		int result = wms_currencyService.deleteCurrency(CommonUtil
-		        .stringToList(ids));
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CurrencyAction.deleteCurrency");
+		int result = wms_currencyService.deleteCurrency(CommonUtil.stringToList(ids));
+		CommonUtil.systemLog("wms/deleteCurrency.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除资金\nID:%S", ids));
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CurrencyAction.deleteCurrency");
 		return SUCCESS;
 	}
 	

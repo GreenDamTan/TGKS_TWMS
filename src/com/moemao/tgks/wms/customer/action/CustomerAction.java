@@ -66,37 +66,31 @@ public class CustomerAction extends TGKSAction
 	
 	public String editCustomer()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CustomerAction.updateCustomer");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CustomerAction.updateCustomer");
 		int result = 0;
 		if (CommonUtil.isEmpty(customerEvt.getId()))
 		{
 			result = wms_customerService.addCustomer(customerEvt);
+			CommonUtil.systemLog("wms/editCustomer.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增客户\n%S", customerEvt.toString()));
 		}
 		else
 		{
 			result = wms_customerService.updateCustomer(customerEvt);
+			CommonUtil.systemLog("wms/editCustomer.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改客户信息\n%S", customerEvt.toString()));
 		}
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CustomerAction.updateCustomer");
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CustomerAction.updateCustomer");
 		return SUCCESS;
 	}
 	
 	public String deleteCustomer()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "CustomerAction.deleteCustomer");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CustomerAction.deleteCustomer");
 		String ids = this.getRequest().getParameter("ids");
-		int result = wms_customerService.deleteCustomer(CommonUtil
-		        .stringToList(ids));
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "CustomerAction.deleteCustomer");
+		int result = wms_customerService.deleteCustomer(CommonUtil.stringToList(ids));
+		CommonUtil.systemLog("wms/deleteCustomer.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除客户\nID:%S", ids));
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CustomerAction.deleteCustomer");
 		return SUCCESS;
 	}
 	

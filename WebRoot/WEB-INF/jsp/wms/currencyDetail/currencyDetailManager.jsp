@@ -37,12 +37,12 @@
 		</table>
 	</form>
 </div>
-
+<!-- 
 <button id="addCurrencyDetail">新增</button>
 <button id="deleteCurrencyDetail">删除</button>
 <button id="onCurrencyDetail">启用</button>
 <button id="offCurrencyDetail">禁用</button>
-
+ -->
 <div id="currencyDetailDiv"></div>
 
 <div id="currencyDetailEdit" title="资金流动信息">

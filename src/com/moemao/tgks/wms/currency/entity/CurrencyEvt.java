@@ -37,6 +37,12 @@ public class CurrencyEvt
 	 */
 	private String remark;
 	
+	@Override
+	public String toString()
+	{
+		return String.format("id:%S\nname:%S\ntype:%S\ncode:%S\nunit:%S\nnum:%S\nremark:%S\n", id, name, type, code, unit, num, remark);
+	}
+	
 	/**
 	 * @return 返回 id
 	 */

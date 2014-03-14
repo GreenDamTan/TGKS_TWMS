@@ -72,10 +72,12 @@ public class OrderAction extends TGKSAction
         if (CommonUtil.isEmpty(orderEvt.getId()))
         {
             result = wms_orderService.addOrder(orderEvt);
+            CommonUtil.systemLog("wms/editOrder.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增订单\n%S", orderEvt.toString()));
         }
         else
         {
             result = wms_orderService.updateOrder(orderEvt);
+            CommonUtil.systemLog("wms/editOrder.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改订单\n%S", orderEvt.toString()));
         }
         
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
@@ -88,6 +90,7 @@ public class OrderAction extends TGKSAction
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "OrderAction.deleteOrder");
         String ids = this.getRequest().getParameter("ids");
         int result = wms_orderService.deleteOrder(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/deleteOrder.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除订单\nID:%S", ids));
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "OrderAction.deleteOrder");
         return SUCCESS;
@@ -106,6 +109,7 @@ public class OrderAction extends TGKSAction
     	CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "OrderAction.completeOrder");
         String ids = this.getRequest().getParameter("ids");
         int result = wms_orderService.completeOrder(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/completeOrder.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("标记订单已完成\nID:%S", ids));
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "OrderAction.completeOrder");
         return SUCCESS;

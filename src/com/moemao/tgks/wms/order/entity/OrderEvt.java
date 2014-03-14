@@ -48,6 +48,12 @@ public class OrderEvt
      * 备注
      */
     private String remark;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\ncode:%S\ntype:%S\nstatus:%S\naccountType:%S\ninvoiceType:%S\ninvoice:%S\ncreateTime:%S\nremark:%S\n", id, code, type, status, accountType, invoiceType, invoice, createTime, remark);
+    }
 
     /**
      * @return 返回 id
