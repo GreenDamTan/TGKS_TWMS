@@ -6,7 +6,7 @@
         <thead>
             <tr class="ui-widget-header ">
                 <th width="20"><input type="checkbox" id="allCustomerId" name="allCustomerId"/></th>
-				<th>供应商名称</th>
+				<th>客户名称</th>
 				<th>主营商品类别</th>
 				<th>联系人</th>
 				<th>手机</th>

@@ -10,7 +10,7 @@
 	<form id="customerReq" action="../wms/queryCustomer.action" method="post">
 		<table>
 			<tr>
-				<td><label>供货商名称: </label></td><td><input type="text" name="customerReq.name" /></td>
+				<td><label>客户名称: </label></td><td><input type="text" name="customerReq.name" /></td>
 				<td><label>主营商品类别: </label></td><td><input type="text" name="customerReq.category" /></td>
 				<td><label>联系人: </label></td><td><input type="text" name="customerReq.person" /></td>
 				<td>

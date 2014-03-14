@@ -3,7 +3,7 @@
 <table>
 	<input type="hidden" name="customerEvt.id" id="customerId" value="${customerEvt.id }" />
 	<tr>
-		<td><label for="name">供货商名称</label></td>
+		<td><label for="name">客户名称</label></td>
 		<td><input type="text" name="customerEvt.name" id="customerName" class="text ui-widget-content ui-corner-all" value="${customerEvt.name }" /></td>
 		<td><label for="address">地址</label></td>
 		<td><input type="text" name="customerEvt.address" id="customerAddress" class="text ui-widget-content ui-corner-all" value="${customerEvt.address }" /></td>
