@@ -75,10 +75,12 @@ public class CategoryAction extends TGKSAction
         if (CommonUtil.isEmpty(categoryEvt.getId()))
         {
             result = wms_categoryService.addCategory(categoryEvt);
+            CommonUtil.systemLog("wms/editCategory.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增商品类型\n%S", categoryEvt.toString()));
         }
         else
         {
             result = wms_categoryService.updateCategory(categoryEvt);
+            CommonUtil.systemLog("wms/editCategory.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改商品类型\n%S", categoryEvt.toString()));
         }
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CategoryAction.updateCategory");
@@ -87,16 +89,12 @@ public class CategoryAction extends TGKSAction
 
     public String deleteCategory()
     {
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-                "CategoryAction.deleteCategory");
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "CategoryAction.deleteCategory");
         String ids = this.getRequest().getParameter("ids");
-        int result = wms_categoryService.deleteCategory(CommonUtil
-                .stringToList(ids));
-        CommonUtil.infoLog(logger,
-                CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-                StringUtil.toBeString(result));
-        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-                "CategoryAction.deleteCategory");
+        int result = wms_categoryService.deleteCategory(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("wms/deleteCategory.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除商品类型\nID:%S", ids));
+        CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+        CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "CategoryAction.deleteCategory");
         return SUCCESS;
     }
 

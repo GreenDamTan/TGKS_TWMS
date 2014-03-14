@@ -21,6 +21,12 @@ public class CategoryEvt
      * 上级类别名称
      */
     private String preName;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\nname:%S\npreId:%S\npreName:%S\n", id, name, preId, preName);
+    }
 
     /**
      * @return 返回 id
