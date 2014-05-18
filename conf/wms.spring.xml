@@ -130,5 +130,50 @@
   <bean id="wms_currencyDetailAction" class="com.moemao.tgks.wms.currencydetail.action.CurrencyDetailAction">
     <property name="wms_currencyDetailService" ref="wms_currencyDetailService" />
   </bean>
-
+  
+  <!-- ﻿express_dao 配置 -->
+  <bean id="wms_expressDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.express.dao.ExpressDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿express_service 配置 -->
+  <bean id="wms_expressService" class="com.moemao.tgks.wms.express.service.impl.ExpressServiceImpl">
+  	<property name="wms_expressPriceService" ref="wms_expressPriceService" />
+    <property name="wms_expressDao" ref="wms_expressDao" />
+  </bean>
+  <!-- ﻿express_action 配置 -->
+  <bean id="wms_expressAction" class="com.moemao.tgks.wms.express.action.ExpressAction">
+    <property name="wms_expressService" ref="wms_expressService" />
+    <property name="wms_expressPriceService" ref="wms_expressPriceService" />
+    <property name="wms_expressCompanyService" ref="wms_expressCompanyService" />
+  </bean>
+  
+  <!-- ﻿expresscompany_dao 配置 -->
+  <bean id="wms_expressCompanyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.expresscompany.dao.ExpressCompanyDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿expresscompany_service 配置 -->
+  <bean id="wms_expressCompanyService" class="com.moemao.tgks.wms.expresscompany.service.impl.ExpressCompanyServiceImpl">
+    <property name="wms_expressCompanyDao" ref="wms_expressCompanyDao" />
+  </bean>
+  <!-- ﻿expresscompany_action 配置 -->
+  <bean id="wms_expressCompanyAction" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction">
+    <property name="wms_expressCompanyService" ref="wms_expressCompanyService" />
+  </bean>
+  
+  <!-- ﻿expressprice_dao 配置 -->
+  <bean id="wms_expressPriceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.wms.expressprice.dao.ExpressPriceDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿expressprice_service 配置 -->
+  <bean id="wms_expressPriceService" class="com.moemao.tgks.wms.expressprice.service.impl.ExpressPriceServiceImpl">
+    <property name="wms_expressPriceDao" ref="wms_expressPriceDao" />
+  </bean>
+  <!-- ﻿expressprice_action 配置 -->
+  <bean id="wms_expressPriceAction" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction">
+    <property name="wms_expressPriceService" ref="wms_expressPriceService" />
+    <property name="wms_expressCompanyService" ref="wms_expressCompanyService" />
+  </bean>
 </beans>

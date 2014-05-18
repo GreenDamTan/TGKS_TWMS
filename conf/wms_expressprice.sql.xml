@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.expressprice.dao.ExpressPriceDao">
+<select id="wms_queryExpressPrice" parameterType="ExpressPriceReq" resultType="ExpressPriceEvt" resultMap="ExpressPriceEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.ecid, c.name, t.area, t.first, t.over FROM t_tgks_wms_expressprice t, t_tgks_wms_expresscompany c
+        ]]>
+        <where>
+                1=1 AND t.ecid = c.id
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="ecid !=null and ecid !='' ">
+                AND t.ECID = #{ecid}
+            </if>
+            <if test="area !=null and area !='' ">
+            	AND t.AREA LIKE CONCAT(CONCAT('%', #{area}),'%')
+            </if>
+            <if test="first !=null and first !='' ">
+                AND t.FIRST = #{first}
+            </if>
+            <if test="over !=null and over !='' ">
+                AND t.OVER = #{over}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addExpressPrice" parameterType="ExpressPriceEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_expressprice (id, ecid, area, first, over) 
+            VALUES (#{id}, #{ecid}, #{area}, #{first}, #{over}) 
+        ]]>
+</insert>
+
+<update id="wms_updateExpressPrice" parameterType="ExpressPriceEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_expressprice SET 
+                       ecid = #{ecid},
+                       area = #{area},
+                       first = #{first},
+                       over = #{over}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteExpressPrice" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_expressprice WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

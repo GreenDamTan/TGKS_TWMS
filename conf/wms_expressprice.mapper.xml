@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.expressprice.dao.ExpressPriceDao">
+    <resultMap id="ExpressPriceEvtMap" type="ExpressPriceEvt">
+        <id property="id" column="ID" />
+        <result property="ecid" column="ECID" />
+        <result property="ecName" column="NAME" />
+        <result property="area" column="AREA" />
+        <result property="first" column="FIRST" />
+        <result property="over" column="OVER" />
+    </resultMap>
+</mapper>

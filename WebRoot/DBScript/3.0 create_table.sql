@@ -147,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_currency` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='货币信息表';
 
 
+
 --
 -- 表的结构 `t_tgks_wms_currencydetail`
 --
@@ -167,3 +168,55 @@ CREATE TABLE IF NOT EXISTS `t_tgks_wms_currencydetail` (
   `remark` varchar(500) default NULL COMMENT '备注',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='货币详情信息表';
+
+
+
+--
+-- 表的结构 `t_tgks_wms_express`
+--
+DROP TABLE IF EXISTS `t_tgks_wms_express`;
+CREATE TABLE IF NOT EXISTS `t_tgks_wms_express` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键',
+  `ecid` varchar(30) NOT NULL COMMENT '快递公司ID',
+  `ecname` varchar(30) NOT NULL COMMENT '快递名称',
+  `ecweb` varchar(100) default NULL COMMENT '快递网址',
+  `number` varchar(30) NOT NULL COMMENT '快递单号',
+  `address` varchar(100) NOT NULL COMMENT '送货地址',
+  `weight` double NOT NULL default '1' COMMENT '重量',
+  `price` double NOT NULL default '0' COMMENT '价格',
+  `orderCode` varchar(30) NOT NULL COMMENT '订单编号',
+  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
+  `remark` varchar(500) default 1 COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='快递记录表';
+
+
+
+--
+-- 表的结构 `t_tgks_wms_expresscompany`
+--
+DROP TABLE IF EXISTS `t_tgks_wms_expresscompany`;
+CREATE TABLE IF NOT EXISTS `t_tgks_wms_expresscompany` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键',
+  `name` varchar(30) NOT NULL COMMENT '名称',
+  `tel` varchar(30) default NULL COMMENT '电话',
+  `mobile` varchar(30) default NULL COMMENT '手机',
+  `web` varchar(100) default NULL COMMENT '网址',
+  `remark` varchar(500) default NULL COMMENT '备注',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='快递公司表';
+
+
+
+--
+-- 表的结构 `t_tgks_wms_expressprice`
+--
+DROP TABLE IF EXISTS `t_tgks_wms_expressprice`;
+CREATE TABLE IF NOT EXISTS `t_tgks_wms_expressprice` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键',
+  `ecid` varchar(30) NOT NULL COMMENT '快递公司ID',
+  `area` varchar(30) NOT NULL COMMENT '区域',
+  `first` double NOT NULL default '0' COMMENT '首重价格',
+  `over` double NOT NULL default '0' COMMENT '超重价格',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='快递报价表';

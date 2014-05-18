@@ -37,5 +37,17 @@
 		<typeAlias alias="CurrencyDetailEvt" type="com.moemao.tgks.wms.currencydetail.entity.CurrencyDetailEvt" />
 		<typeAlias alias="CurrencyDetailReq" type="com.moemao.tgks.wms.currencydetail.entity.CurrencyDetailReq" />
 		
+		<!-- wms_﻿express -->
+		<typeAlias alias="ExpressEvt" type="com.moemao.tgks.wms.express.entity.ExpressEvt" />
+		<typeAlias alias="ExpressReq" type="com.moemao.tgks.wms.express.entity.ExpressReq" />
+		
+		<!-- wms_﻿expresscompany -->
+		<typeAlias alias="ExpressCompanyEvt" type="com.moemao.tgks.wms.expresscompany.entity.ExpressCompanyEvt" />
+		<typeAlias alias="ExpressCompanyReq" type="com.moemao.tgks.wms.expresscompany.entity.ExpressCompanyReq" />
+		
+		<!-- wms_﻿expressprice -->
+		<typeAlias alias="ExpressPriceEvt" type="com.moemao.tgks.wms.expressprice.entity.ExpressPriceEvt" />
+		<typeAlias alias="ExpressPriceReq" type="com.moemao.tgks.wms.expressprice.entity.ExpressPriceReq" />
+		
 	</typeAliases>
 </configuration>

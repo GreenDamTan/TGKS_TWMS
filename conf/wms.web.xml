@@ -247,6 +247,88 @@
         <result name="success">/WEB-INF/jsp/common/success.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
+	
+	<!-- wms_express -->
+    <action name="expressManager" class="com.moemao.tgks.wms.express.action.ExpressAction" method="expressManager">
+        <result name="success">/WEB-INF/jsp/wms/express/expressManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
 
+    <action name="queryExpress" class="com.moemao.tgks.wms.express.action.ExpressAction" method="queryExpress">
+        <result name="success">/WEB-INF/jsp/wms/express/expressList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpressPage" class="com.moemao.tgks.wms.express.action.ExpressAction" method="editExpressPage">
+        <result name="success">/WEB-INF/jsp/wms/express/expressEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpress" class="com.moemao.tgks.wms.express.action.ExpressAction" method="editExpress">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteExpress" class="com.moemao.tgks.wms.express.action.ExpressAction" method="deleteExpress">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+	<!-- wms_expresscompany -->
+    <action name="expressCompanyManager" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="expressCompanyManager">
+        <result name="success">/WEB-INF/jsp/wms/expressCompany/expressCompanyManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryExpressCompany" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="queryExpressCompany">
+        <result name="success">/WEB-INF/jsp/wms/expressCompany/expressCompanyList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpressCompanyPage" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="editExpressCompanyPage">
+        <result name="success">/WEB-INF/jsp/wms/expressCompany/expressCompanyEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpressCompany" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="editExpressCompany">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteExpressCompany" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="deleteExpressCompany">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <!-- wms_expressprice -->
+    <action name="expressPriceManager" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="expressPriceManager">
+        <result name="success">/WEB-INF/jsp/wms/expressPrice/expressPriceManager.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="queryExpressPrice" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="queryExpressPrice">
+        <result name="success">/WEB-INF/jsp/wms/expressPrice/expressPriceList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpressPricePage" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="editExpressPricePage">
+        <result name="success">/WEB-INF/jsp/wms/expressPrice/expressPriceEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editExpressPrice" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="editExpressPrice">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="deleteExpressPrice" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="deleteExpressPrice">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
+    <action name="queryExpressPriceDataByEcid" class="com.moemao.tgks.wms.expressprice.action.ExpressPriceAction" method="queryExpressPriceDataByEcid">
+        <result name="success">/WEB-INF/jsp/wms/expressPrice/expressPriceDataList.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
   </package>
 </struts>

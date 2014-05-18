@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.expresscompany.dao.ExpressCompanyDao">
+    <resultMap id="ExpressCompanyEvtMap" type="ExpressCompanyEvt">
+        <id property="id" column="ID" />
+        <result property="name" column="NAME" />
+        <result property="tel" column="TEL" />
+        <result property="mobile" column="MOBILE" />
+        <result property="web" column="WEB" />
+        <result property="remark" column="REMARK" />
+    </resultMap>
+</mapper>

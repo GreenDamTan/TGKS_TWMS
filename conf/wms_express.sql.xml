@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.wms.express.dao.ExpressDao">
+<select id="wms_queryExpress" parameterType="ExpressReq" resultType="ExpressEvt" resultMap="ExpressEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.ecid, t.ecname, t.ecweb, t.number, t.address, t.weight, t.price, t.ordercode, t.createtime, t.remark FROM t_tgks_wms_express t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="ecid !=null and ecid !='' ">
+                AND t.ECID = #{ecid}
+            </if>
+            <if test="ecName !=null and ecName !='' ">
+                AND t.ECNAME LIKE CONCAT(CONCAT('%', #{ecName}),'%')
+            </if>
+            <if test="ecWeb !=null and ecWeb !='' ">
+                AND t.ECWEB = #{ecWeb}
+            </if>
+            <if test="number !=null and number !='' ">
+                AND t.NUMBER LIKE CONCAT(CONCAT('%', #{number}),'%')
+            </if>
+            <if test="address !=null and address !='' ">
+                AND t.ADDRESS LIKE CONCAT(CONCAT('%', #{address}),'%')
+            </if>
+            <if test="weight !=null and weight !='' ">
+                AND t.WEIGHT = #{weight}
+            </if>
+            <if test="price !=null and price !='' ">
+                AND t.PRICE = #{price}
+            </if>
+            <if test="orderCode !=null and orderCode !='' ">
+                AND t.ORDERCODE LIKE CONCAT(CONCAT('%', #{orderCode}),'%')
+            </if>
+            <if test="createTime !=null and createTime !='' ">
+                AND t.CREATETIME = #{createTime}
+            </if>
+            <if test="createTimeStart !=null and createTimeStart !='' ">
+                AND t.CREATETIME >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd !=null and createTimeEnd !='' ">
+                AND #{createTimeEnd} >= t.CREATETIME
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="wms_addExpress" parameterType="ExpressEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_wms_express (id, ecid, ecname, ecweb, number, address, weight, price, ordercode, createtime, remark) 
+            VALUES (#{id}, #{ecid}, #{ecName}, #{ecWeb}, #{number}, #{address}, #{weight}, #{price}, #{orderCode}, #{createTime}, #{remark}) 
+        ]]>
+</insert>
+
+<update id="wms_updateExpress" parameterType="ExpressEvt">
+        <![CDATA[  
+            UPDATE t_tgks_wms_express SET 
+                       ecid = #{ecid},
+                       ecname = #{ecName},
+                       ecweb = #{ecWeb},
+                       number = #{number},
+                       address = #{address},
+                       weight = #{weight},
+                       price = #{price},
+                       ordercode = #{orderCode},
+                       createtime = #{createTime},
+                       remark = #{remark}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="wms_deleteExpress" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_wms_express WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

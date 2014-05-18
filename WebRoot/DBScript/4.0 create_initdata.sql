@@ -12,7 +12,11 @@ INSERT INTO `t_tgks_common_menu` (`id`, `preid`, `name`, `status`, `url`, `level
 ('COMM20140221162845000001', 'COMM20140304160313000002', '客户管理', '1', '../wms/customerManager.action', '2', '222'),
 ('COMM20140304160613000004', '0', '资金管理系统', '1', '#', '1', '300'),
 ('COMM20140306154550000001', 'COMM20140304160613000004', '资金管理', '1', '../wms/currencyManager.action', '2', '300'),
-('COMM20140306154609000002', 'COMM20140304160613000004', '资金流动明细', '1', '../wms/currencyDetailManager.action', '2', '300');
+('COMM20140306154609000002', 'COMM20140304160613000004', '资金流动明细', '1', '../wms/currencyDetailManager.action', '2', '300'),
+('COMM20140517145458000001', '0', '快递管理系统', '1', '#', '1', '500'),
+('COMM20140517145557000003', 'COMM20140517145458000001', '快递记录管理', '1', '../wms/expressManager.action', '2', '500'),
+('COMM20140517145642000005', 'COMM20140517145458000001', '快递公司管理', '1', '../wms/expressCompanyManager.action', '2', '500'),
+('COMM20140517145713000007', 'COMM20140517145458000001', '快递价格管理', '1', '../wms/expressPriceManager.action', '2', '500');
 
 --
 -- 转存表中的数据 `t_tgks_wms_category`
