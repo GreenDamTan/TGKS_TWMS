@@ -48,6 +48,11 @@ public class ExpressAction extends TGKSAction
 	 */
 	private List<ExpressEvt> list;
 	
+	/**
+	 * 导出用结果集
+	 */
+	private List<ExpressEvt> exportList;
+	
 	private List<ExpressPriceEvt> epList;
 	
 	private List<ExpressCompanyEvt> ecList;
@@ -118,6 +123,42 @@ public class ExpressAction extends TGKSAction
 		CommonUtil.systemLog("wms/deleteExpress.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除快递单\nID:%S", ids));
 		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "ExpressAction.deleteExpress");
+		return SUCCESS;
+	}
+	
+	/**
+	 * 
+	 * @Title: exportExpress
+	 * @Description: 导出本月快递单 计算快递总费用
+	 * @return
+	 * @return String 返回类型
+	 * @throws
+	 */
+	public String exportExpress()
+	{
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "ExpressAction.exportExpress");
+		String ids = this.getRequest().getParameter("ids");
+		this.exportList = wms_expressService.queryExpressByIds(CommonUtil .stringToList(ids));
+		
+		if (exportList.size() > 0)
+		{
+			ExpressEvt lastLine = new ExpressEvt();
+			
+			int totalPrice = 0;
+			for (ExpressEvt e : exportList)
+			{
+				totalPrice += e.getPrice();
+			}
+			
+			lastLine.setPrice(totalPrice);
+			lastLine.setNumber("共计");
+			
+			exportList.add(lastLine);
+		}
+		
+		CommonUtil.systemLog("wms/exportExpress.action", CommonConstant.SYSTEMLOG_TYPE_0, exportList == null ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("导出快递单\nID:%S", ids));
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(exportList));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "ExpressAction.exportExpress");
 		return SUCCESS;
 	}
 	
@@ -225,6 +266,16 @@ public class ExpressAction extends TGKSAction
 	public void setEcList(List<ExpressCompanyEvt> ecList)
     {
     	this.ecList = ecList;
+    }
+
+	public List<ExpressEvt> getExportList()
+    {
+    	return exportList;
+    }
+
+	public void setExportList(List<ExpressEvt> exportList)
+    {
+    	this.exportList = exportList;
     }
 	
 }

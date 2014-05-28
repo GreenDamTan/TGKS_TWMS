@@ -83,4 +83,13 @@
             #{ids}
         </foreach>
 </delete>
+
+<select id="wms_queryExpressByIds" parameterType="list" resultType="ExpressEvt" resultMap="ExpressEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.ecid, t.ecname, t.ecweb, t.number, t.address, t.weight, t.price, t.ordercode, t.createtime, t.remark FROM t_tgks_wms_express t WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</select>
 </mapper>

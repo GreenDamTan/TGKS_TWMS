@@ -17,4 +17,5 @@ public interface ExpressService
 	
 	public int deleteExpress(List<String> ids);
 
+	public List<ExpressEvt> queryExpressByIds(List<String> ids);
 }

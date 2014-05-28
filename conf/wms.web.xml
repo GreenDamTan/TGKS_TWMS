@@ -274,6 +274,11 @@
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
     
+    <action name="exportExpress" class="com.moemao.tgks.wms.express.action.ExpressAction" method="exportExpress">
+        <result name="success">/WEB-INF/jsp/wms/express/expressExport.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+    
 	<!-- wms_expresscompany -->
     <action name="expressCompanyManager" class="com.moemao.tgks.wms.expresscompany.action.ExpressCompanyAction" method="expressCompanyManager">
         <result name="success">/WEB-INF/jsp/wms/expressCompany/expressCompanyManager.jsp</result>
@@ -330,5 +335,6 @@
         <result name="success">/WEB-INF/jsp/wms/expressPrice/expressPriceDataList.jsp</result>
         <result name="error">/WEB-INF/jsp/common/error.jsp</result>
     </action>
+    
   </package>
 </struts>

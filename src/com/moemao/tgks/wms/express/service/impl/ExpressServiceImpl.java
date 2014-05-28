@@ -116,6 +116,11 @@ public class ExpressServiceImpl implements ExpressService
 		return wms_expressDao.wms_deleteExpress(ids);
 	}
 	
+	public List<ExpressEvt> queryExpressByIds(List<String> ids)
+	{
+		return wms_expressDao.wms_queryExpressByIds(ids);
+	}
+	
 	/**
 	 * @return 返回 wms_expressDao
 	 */

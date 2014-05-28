@@ -15,4 +15,6 @@ public interface ExpressDao extends TGKSDao
 	public int wms_updateExpress(ExpressEvt expressEvt) throws DataAccessException;
 	
 	public int wms_deleteExpress(List<String> list) throws DataAccessException;
+	
+	public List<ExpressEvt> wms_queryExpressByIds(List<String> list) throws DataAccessException;
 }

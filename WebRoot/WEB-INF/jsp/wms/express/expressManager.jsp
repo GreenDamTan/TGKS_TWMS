@@ -33,6 +33,7 @@
 
 <button id="addExpress">新增</button>
 <button id="deleteExpress">删除</button>
+<button id="exportExpress">导出</button>
 
 <div id="expressDiv"></div>
 
@@ -192,13 +193,12 @@ $(document).ready(function(){
 		return false;
 	});
 	 
-	 // 启用按钮
-	$( "#onExpress" ).button({
+	 // 导出按钮
+	$( "#exportExpress" ).button({
 		icons: {
-			primary: "ui-icon-check"
+			primary: "ui-icon-print"
 			}
 		}).click(function() {
-			$("#expressManagerSubmit").val("1");
 			// 获取选中的记录ids
 			var ids = "";
 			var array = document.getElementsByName("expressId");
@@ -221,25 +221,11 @@ $(document).ready(function(){
 			if (ids == "")
 			{
 				alert("请选择至少一条记录");
-				$("#expressManagerSubmit").val("0");
 				return false;
 			}
 			
-			// ajax调用删除action
-			var options = { 
-				url:"../wms/changeStatusExpress.action?status=1&ids=" + ids , // 提交给哪个执行
-				type:'POST', 
-				success: function(){
-					// 执行成功刷新form
-					query();
-				},
-				error:function(){ 
-					alert("操作失败"); 
-				}
-			};
+			window.open("../wms/exportExpress.action?ids=" + ids);
 			
-			$("#expressConfirm").ajaxSubmit(options);
-			$("#expressManagerSubmit").val("0");
 			return false;
 	});
 	 

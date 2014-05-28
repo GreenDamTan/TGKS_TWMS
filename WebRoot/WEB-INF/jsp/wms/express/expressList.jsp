@@ -8,6 +8,7 @@
                 <th width="20"><input type="checkbox" id="allExpressId" name="allExpressId"  /></th>
 				<th>快递ID</th>
 				<th>快递单号</th>
+				<th>物流信息</th>
 				<th>快递名称</th>
 				<th>重量</th>
 				<th>价格</th>
@@ -22,6 +23,7 @@
 					<td width="20"><input type="checkbox" name="expressId" value="<s:property value='#evt.id'/>" /></td>
 					<td><b id="<s:property value='#evt.id'/>" class="expressUpdate"><s:property value="#evt.id"/></b></td>
 					<td><s:property value="#evt.number"/></td>
+					<td><input type="button" value="查询" onclick="window.open('<s:property value="#evt.ecWeb"/><s:property value="#evt.number"/>');" /></td>
 					<td><s:property value="#evt.ecName"/></td>
 					<td><s:property value="#evt.weight"/></td>
 					<td><s:property value="#evt.price"/></td>
